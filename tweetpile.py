@@ -113,10 +113,9 @@ def pile_to_conversations(pile):
             tweet['conversation_id'] = parent['conversation_id']
             conversations[tweet['conversation_id']].append(tweet)
 
-    # at the end: order conversations by the date of their first tweet
-    #conversations = {sortedcollections.ItemSortedDict(lambda k, v: v[0]['date'])}
-
-    return conversations
+    # order conversations by the date of their first tweet
+    sorted_convs = sortedcollections.ItemSortedDict(lambda k, v: v[0]['date'], conversations)
+    return sorted_convs
 
 
 
