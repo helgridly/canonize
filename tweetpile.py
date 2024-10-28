@@ -107,6 +107,13 @@ def pile_to_conversations(pile):
             conversations[tweet_id] = [tweet]
             pile[tweet_id]['conversation_id'] = tweet_id
 
+        # todo: if my parent isn't the user, hit the graphql for this thread and add 'em to a separate context pile
+        # (separate context pile is to not pollute the existing pile with other people's tweets)
+        # collect tweets walking back up the thread until we either hit the top or one by the user
+        # now we know the conversation id (might be a new one if user isn't the thread OP)
+        # add all those tweets to the conversation
+        # then resume at "i'm a reply" below
+
         # i'm a reply; add me to my parent's conversation
         else:
             parent = pile[tweet['parent_status_id']]

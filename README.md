@@ -6,11 +6,11 @@ see the design doc: https://docs.google.com/document/d/1pE_3Kb1y5cpvGn1ZXR3OEhv9
 ## now
 
 - [x] clean up tweets.js into pile
-- [ ] synthesize tweets into conversations
+- [x] synthesize tweets into conversations
+- [ ] TweetDetail graphql for finding missing parents
 
 ## next
 
-- [ ] use TweetDetail graphql 
 - [ ] jekyll page template
 - [ ] twinder
 - [ ] remove reviewed mark
