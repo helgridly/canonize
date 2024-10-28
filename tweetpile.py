@@ -60,7 +60,7 @@ def parse_one_tweet(tweet):
     return outweet
 
 def tweets_from_js(fname, js_prefix):
-    """parse tweets.js into a list of tweets, sorted by date asc"""
+    """parse tweets.js into a list of tweets, sorted by status_id asc"""
     with open(fname, "r") as f:
         contents = f.read()
         
@@ -73,15 +73,15 @@ def tweets_from_js(fname, js_prefix):
         tweets = json.loads(contents)
 
     # ItemSortedDict is a dict whose keys can be ordered by their values
-    # this means that when we iterate over the tweet ids, we get them back in date order
-    # this doesn't guarantee that tweets are returned in the order they're written, because threads
-    # written in the thread composer are published all at once and have identical dates :(
-    tweets_by_date = sortedcollections.ItemSortedDict(lambda k, v: v['date'])
+    # this means that when we iterate over the tweet ids, we get them back in status_id order,
+    # which ascend over time
+    tweets_by_status_id = sortedcollections.ItemSortedDict(lambda k, v: v['status_id'])
     for tweet in tweets:
         parsed = parse_one_tweet(tweet['tweet'])
-        tweets_by_date.update({parsed['status_id'] : parsed})
+        tweets_by_status_id.update({parsed['status_id'] : parsed})
 
-    return tweets_by_date
+    return tweets_by_status_id
+
 
 def create_sorted_tweetpile():
     alive_tweets = tweets_from_js("tweets.js", "window.YTD.tweets.part0")
@@ -92,80 +92,26 @@ def create_sorted_tweetpile():
 
 def pile_to_conversations(pile):
     """we have a pile of tweets that we want to turn into threads
-    imagine a bunch of empty hangers.
-    every time we see a tweet, we:
-        - see if there's a hanger labelled with its id. if so, mark its conv_id as itself
-        then:
-        - if the tweet has no parent, set its conv_id as itself
-        - if the tweet has a parent:
-            - if the parent is from me, and the parent already has a conv_id, inherit the parent's conv_id
-                - if we already had a conv_id, find all other tweets on that hanger and move them; delete the old conv_id
-            - if the parent is from me, and doesn't have a conv_id yet, 
-            - if the parent isn't from me, set its conv_id as itself [we'll fix this with the lookup]
-    """
+    they come in status_id order, from oldest to newest. so we'll always see a parent tweet before its child
     
+    - if a tweet has no parent, or its parent isn't from the user, make a new conversation for it
+    - else label it with its parent's conversation_id and add it to that list
+    """
     conversations = dict()
 
     for tweet_id in pile:
         tweet = pile[tweet_id]
 
-        # if another tweet marked me as the head of a conversation, become the head of that conversation
-        if tweet_id in conversations:
-            tweet['conversation_id'] = tweet_id
-            conversations[tweet_id] = [tweet] + conversations[tweet_id]
-
-        # if nobody marked me as the head of a conversation, but i'm a top level tweet, i'm the beginning of a new conversation
-        elif not tweet['parent_status_id']:
+        # if i'm a top level tweet, or my parent isn't the user, i'm the beginning of a new conversation
+        if (not tweet['parent_status_id']) or (tweet['parent_user_id'] != conf.USER_ID):
             conversations[tweet_id] = [tweet]
             pile[tweet_id]['conversation_id'] = tweet_id
 
-        # i'm a reply; walk up the chain
-        if tweet['parent_status_id']:
-            old_conv_id = tweet.get('conversation_id')
-
-            # if the parent is from our user, we've either seen it already, or will eventually
-            if tweet['parent_user_id'] == conf.USER_ID:
-                parent = pile[tweet['parent_status_id']]
-
-                # we've seen the parent already, join its conversation
-                if 'conversation_id' in parent:
-                    tweet['conversation_id'] = parent['conversation_id']
-
-                # we haven't seen the parent yet. make a conversation for it
-                else:
-                    tweet['conversation_id'] = tweet['parent_status_id']
-                    conversations[tweet['parent_status_id']] = [] # we'll move everything in a sec
-                
-            # the parent is not from our user. this is the horrible lookup case
-            else:
-                # for now, we'll treat it as a top level tweet
-                tweet['conversation_id'] = tweet_id
-                conversations[tweet_id] = [] # we'll move everything in a sec
-
-            if old_conv_id is not tweet['conversation_id']:
-                if not old_conv_id:
-                    # no old conversation, just add us to the new conversation 
-                    #if tweet_id == '1850299977123197017':
-                    #    import pdb; pdb.set_trace()
-                    #    pass
-                    conversations[tweet['conversation_id']].append(tweet)
-                else:
-                    # move us and all our children to the new conversation id
-                    try:
-                        assert tweet in conversations[old_conv_id]
-                    except AssertionError as e:
-                        import pdb; pdb.set_trace()
-                        pass
-                    conversations[tweet['conversation_id']].extend( conversations[old_conv_id] )
-                    del conversations[old_conv_id]
-                    
-
-                for t in conversations[tweet['conversation_id']]:
-                    t['conversation_id'] = tweet['conversation_id']
-
-    # order posts in conversations by status id (which ascend over time, good enough)
-    for c in conversations:
-        conversations[c] = sorted(conversations[c], key=lambda t: t['status_id'])
+        # i'm a reply; add me to my parent's conversation
+        else:
+            parent = pile[tweet['parent_status_id']]
+            tweet['conversation_id'] = parent['conversation_id']
+            conversations[tweet['conversation_id']].append(tweet)
 
     # at the end: order conversations by the date of their first tweet
     #conversations = {sortedcollections.ItemSortedDict(lambda k, v: v[0]['date'])}
