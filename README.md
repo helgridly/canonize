@@ -5,11 +5,12 @@ see the design doc: https://docs.google.com/document/d/1pE_3Kb1y5cpvGn1ZXR3OEhv9
 
 ## now
 
-- [ ] clean up tweets.js into pile
+- [x] clean up tweets.js into pile
+- [ ] synthesize tweets into conversations
 
 ## next
 
-- [ ] synthesize tweets into conversations
+- [ ] use TweetDetail graphql 
 - [ ] jekyll page template
 - [ ] twinder
 - [ ] remove reviewed mark
