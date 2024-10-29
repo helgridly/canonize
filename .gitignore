@@ -167,3 +167,5 @@ cython_debug/
 # this project's scratch files
 tweets.js
 deleted-tweets.js
+secrets.py
+data/**
