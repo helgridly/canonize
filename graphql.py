@@ -3,6 +3,7 @@ import requests
 import json
 import urllib.parse
 import tweetparse
+import time
 
 # trash we have to pass to twitter otherwise it gets mad
 default_features = {
@@ -107,13 +108,32 @@ def get_params(focalTweetId, cursor=None):
 def raw_tweet_to_parsed(tweet_result):
     return tweetparse.parse_one_tweet(tweet_result['legacy'], tweet_result['core']['user_results']['result'])
 
+rate_limit_remaining = 150
+rate_limit_reset = 0
+def ratelimit_wait():
+    print("Rate limit remaining", rate_limit_remaining, "reset in", rate_limit_reset - time.time(), "seconds")
+    now = time.time()
+    if rate_limit_remaining < 10 and now < rate_limit_reset:
+        print("Rate limit, sleeping", (rate_limit_reset - now) + 5, "seconds")
+        time.sleep((rate_limit_reset - now) + 5)
+
+def update_ratelimit(headers):
+    global rate_limit_remaining
+    global rate_limit_reset
+    rate_limit_remaining = int(headers['x-rate-limit-remaining'])
+    rate_limit_reset = int(headers['x-rate-limit-reset'])
+
 def fetch_tweet_detail(focalTweetId, cursor=None):
-    resp = requests.get("https://x.com/i/api/graphql/nBS-WpgA6ZG0CyNHD517JQ/TweetDetail", params=get_params(focalTweetId, cursor), headers=get_headers()).json()
+    ratelimit_wait()
+    print("fetching", focalTweetId, "at cursor", cursor if cursor else "<none>")
+    resp = requests.get("https://x.com/i/api/graphql/nBS-WpgA6ZG0CyNHD517JQ/TweetDetail", params=get_params(focalTweetId, cursor), headers=get_headers())
+    update_ratelimit(resp.headers)
+    result = resp.json()
 
     tweets = [] # tuples of tweet, user data
     cursors = {} # tuples of cursor type, value
 
-    for instr in resp['data']['threaded_conversation_with_injections_v2']['instructions']:
+    for instr in result['data']['threaded_conversation_with_injections_v2']['instructions']:
         if instr['type'] == "TimelineAddEntries":
             for entry in instr['entries']:
                 if entry['content']['entryType'] == "TimelineTimelineItem":
@@ -142,17 +162,58 @@ def fetch_tweet_detail(focalTweetId, cursor=None):
 
     return (tweets, cursors)
 
-if __name__ == "__main__":
-    # TODO: receive a context pile and the tweet pile
-    # fetch tweet details
-    # work bottom to top, putting it all in the context pile and stopping when we hit something by the user that's NOT the focused tweet
-    # paginate upwards using cursorTop if we hit the top before finding anything
-    #   ==> remember to ratelimit pagination
-    # return the expanded context pile and tweetpile.py will take it from there
+def fetch_tweet_context(tweet_id, context_pile, tweet_pile):
+
+    # list of tweets we've added to the context pile from this conversation
+    conversation_tweets_ids = []
+    cursor = None
+    known_parent_tweet = None
+
+    while True:
+        tweets, cursors = fetch_tweet_detail(tweet_id, cursor)
+
+        # go in reverse order
+        for tweet in tweets[::-1]:
+            if tweet['status_id'] in context_pile or tweet['status_id'] in tweet_pile:
+                # it's either someone else's tweet that we've seen before, or
+                # it's one of our tweets (which we have also seen before)
+                known_parent_tweet = tweet
+
+                # it should have a conversation id, in which case we're done
+                context_pile_has_convid = tweet['status_id'] in context_pile and context_pile[tweet['status_id']].get('conversation_id')
+                tweet_pile_has_convid = tweet['status_id'] in tweet_pile and tweet_pile[tweet['status_id']].get('conversation_id')
+                assert context_pile_has_convid or tweet_pile_has_convid
+
+                break
+
+            conversation_tweets_ids.append(tweet['status_id'])
+            context_pile[tweet['status_id']] = tweet
+
+        if not known_parent_tweet:
+            # we got to the first tweet in the thread
+            if 'Top' in cursors:
+                # keep paginating upwards
+                cursor = cursors['Top']
+                continue
+            else:
+                # if we hit the top and don't have a cursor, then the first tweet is the new conversation id
+                known_parent_tweet = tweets[0]
+                known_parent_tweet['conversation_id'] = known_parent_tweet['status_id']
+
+        return known_parent_tweet['conversation_id'], conversation_tweets_ids
     
-    tweets, cursors = fetch_tweet_detail("1850670820894421069", "DwAAAPAAHCaEgLn98s7crjM1AgAA")
+    assert False, "shouldn't get here"
+    return (conversation_id, conversation_tweets_ids)
+
+
+
+if __name__ == "__main__":
+    # testing
+    
+    #tweets, cursors = fetch_tweet_detail("1850670820894421069", "DwAAAPAAHCaEgLn98s7crjM1AgAA")
+    context_pile = {}
+    tweet_pile = {}
+    conv_id, conv_tweet_ids = fetch_tweet_context("1850670820894421069", context_pile, tweet_pile)
 
     import pdb; pdb.set_trace()
     pass
-
-
