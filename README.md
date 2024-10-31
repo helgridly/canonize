@@ -9,7 +9,7 @@ see the design doc: https://docs.google.com/document/d/1pE_3Kb1y5cpvGn1ZXR3OEhv9
 - [x] synthesize tweets into conversations
 - [x] TweetDetail graphql for finding missing parents
 - [ ] fetch tweet context from tweetpile.py
-- [ ] flatten conversations in depth-first tweet order
+- [x] flatten conversations in depth-first tweet order
 
 ## next
 
