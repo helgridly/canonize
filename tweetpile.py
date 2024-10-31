@@ -76,6 +76,18 @@ def load_tweetpile_resume():
     except FileNotFoundError:
         return 0
 
+def conversation_to_flat_tree(conv_tweets):
+    def recursive_flatten(tweet):
+        result = [tweet]
+        for child in conv_tweets:
+            if child.parent_id == tweet.id:
+                result.extend(recursive_flatten(child))
+        return result
+
+    root_tweets = [tweet for tweet in conv_tweets if tweet['parent_status_id'] is None]
+    return [tweet for root in root_tweets for tweet in recursive_flatten(root)]
+
+
 def pile_to_conversations(pile):
     """we have a pile of tweets that we want to turn into threads
     they come in status_id order, from oldest to newest. so we'll always see a parent tweet before its child
@@ -136,15 +148,17 @@ def pile_to_conversations(pile):
         save_context_pile(context_pile)
         save_tweetpile_resume(tweet['status_id'])
 
-    # TODO: instead flatten the tree depth-first to maintain thread ordering better, see codeium
+    def find_earliest_date(conv):
+        for tweet in conv:
+            if tweet['date']:
+                return tweet['date']
+        return None
+
+    # flatten each conversation
     # order conversations by the date of their first tweet
-    sorted_convs = sortedcollections.ItemSortedDict(lambda k, v: v[0]['date'], conversations)
+    flat_convs = { k: conversation_to_flat_tree(v) for k, v in conversations.items() }
+    sorted_convs = sortedcollections.ItemSortedDict(lambda k, v: find_earliest_date(v), flat_convs)
     return sorted_convs
-
-
-def excepthook(type, value, traceback):
-    pdb.post_mortem(traceback)
-
 
 if __name__ == "__main__":
     sys.excepthook = excepthook
