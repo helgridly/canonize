@@ -109,26 +109,31 @@ def get_params(focalTweetId, cursor=None):
 def raw_tweet_to_parsed(tweet_result):
     return tweetparse.parse_one_tweet(tweet_result['legacy'], tweet_result['core']['user_results']['result'])
 
-DELETED_REST_ID = -1
-LOCKED_REST_ID = 0
+def deleted_tweet_to_parsed(str_id):
+    return dead_tweet_to_parsed(str_id, True, None)
+
 def tombstone_tweet_to_parsed(tweet_result, entry, parent_tweet):
     is_deleted = "deleted" in tweet_result['tombstone']['text']['text']
-    tombstone_user_data = {
+    return dead_tweet_to_parsed(entry['entryId'].split('-')[-1], is_deleted, parent_tweet)
+
+DELETED_REST_ID = -1
+LOCKED_REST_ID = 0
+def dead_tweet_to_parsed(id_str, is_deleted, parent_tweet):
+    dummy_user_data = {
         "rest_id": DELETED_REST_ID if is_deleted else LOCKED_REST_ID,
         "legacy": {
             "screen_name": "[deleted]" if is_deleted else "[locked]",
         }
     }
-    tombstone_tweet = {
-        # entry ids are tweet-XXXXX for timeline items and conversationthread-XXXX-tweet-XXXX in modules
-        "id_str": entry['entryId'].split('-')[-1],
+    dummy_tweet = {
+        "id_str": id_str,
         "in_reply_to_status_id_str": parent_tweet and parent_tweet['status_id'],
         "in_reply_to_user_id_str": parent_tweet and parent_tweet['user_id'],
         "in_reply_to_screen_name": parent_tweet and parent_tweet['username'],
         "full_text": "[deleted]" if is_deleted else "[locked]",
         "created_at": None
     }
-    return tweetparse.parse_one_tweet(tombstone_tweet, tombstone_user_data)
+    return tweetparse.parse_one_tweet(dummy_tweet, dummy_user_data)
 
 rate_limit_remaining = 150
 rate_limit_reset = 0
@@ -176,6 +181,11 @@ def fetch_tweet_detail(focalTweetId, cursor=None):
 
     tweets = [] # tuples of tweet, user data
     cursors = {} # tuples of cursor type, value
+
+    # handle missing top-level tweets, which when you look them up give you a big ole nope instead of a tombstone
+    if any( ["No status found" in error.get('message', "") for error in result.get('errors', [])] ):
+        tweets.append(deleted_tweet_to_parsed(focalTweetId))
+        return (tweets, cursors)
 
     for instr in result['data']['threaded_conversation_with_injections_v2']['instructions']:
         if instr['type'] == "TimelineAddEntries":
