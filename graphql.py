@@ -166,6 +166,10 @@ def parse_one_tweet(tweets, entry, is_module=False):
                                                         entry,
                                                         tweets[-1] if tweets else None))
             #print("TM" if is_module else "TI", [tombstone] )
+        elif itemContent['tweet_results']['result']['__typename'] == "TweetWithVisibilityResults":
+            # for "people the author mentioned can reply" type tweets
+            new_tweets.append(raw_tweet_to_parsed(itemContent['tweet_results']['result']['tweet']))
+            #print("TM" if is_module else "TI", itemContent['tweet_results']['result']['tweet']['legacy']['full_text'] )
         else:
             new_tweets.append(raw_tweet_to_parsed(itemContent['tweet_results']['result']))
             #print("TM" if is_module else "TI", itemContent['tweet_results']['result']['legacy']['full_text'] )
