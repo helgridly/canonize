@@ -160,6 +160,9 @@ def pile_to_conversations(pile):
     sorted_convs = sortedcollections.ItemSortedDict(lambda k, v: find_earliest_date(v), flat_convs)
     return sorted_convs
 
+def excepthook(type, value, traceback):
+    pdb.post_mortem(traceback)
+
 if __name__ == "__main__":
     sys.excepthook = excepthook
     pile = create_sorted_tweetpile()
