@@ -165,7 +165,8 @@ cython_debug/
 .vscode/
 
 # this project's scratch files
-tweets.js
-deleted-tweets.js
+scratch/**
+input/**
+
+# auth tokens go here
 secrets.py
-data/**

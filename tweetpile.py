@@ -35,43 +35,43 @@ def tweets_from_js(fname, js_prefix):
 
 
 def create_sorted_tweetpile():
-    alive_tweets = tweets_from_js("tweets.js", "window.YTD.tweets.part0")
-    deleted_tweets = tweets_from_js("deleted-tweets.js", "window.YTD.deleted_tweets.part0")
+    alive_tweets = tweets_from_js("input/tweets.js", "window.YTD.tweets.part0")
+    deleted_tweets = tweets_from_js("input/deleted-tweets.js", "window.YTD.deleted_tweets.part0")
 
     alive_tweets.update(deleted_tweets)
     return alive_tweets
 
 def save_conversations(conversations):
-    with open("conversations.pkl", "wb") as f:
+    with open("scratch/conversations.pkl", "wb") as f:
         pickle.dump(conversations, f)
 
 def load_conversations():
     # if we have a conversations.pkl file, load it
     try:
-        with open("conversations.pkl", "rb") as f:
+        with open("scratch/conversations.pkl", "rb") as f:
             return pickle.load(f)
     except FileNotFoundError:
         return {}
 
 def save_context_pile(context_pile):
-    with open("context_pile.pkl", "wb") as f:
+    with open("scratch/context_pile.pkl", "wb") as f:
         pickle.dump(context_pile, f)
 
 def load_context_pile():
     # if we have a context_pile.pkl file, load it
     try:
-        with open("context_pile.pkl", "rb") as f:
+        with open("scratch/context_pile.pkl", "rb") as f:
             return pickle.load(f)
     except FileNotFoundError:
         return {}
 
 def save_tweetpile_resume(status_id):
-    with open("tweetpile_resume", "w") as f:
+    with open("scratch/tweetpile_resume", "w") as f:
         f.write(status_id)
 
 def load_tweetpile_resume():
     try:
-        with open("tweetpile_resume", "r") as f:
+        with open("scratch/tweetpile_resume", "r") as f:
             return f.read()
     except FileNotFoundError:
         return 0
