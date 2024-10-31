@@ -109,6 +109,27 @@ def get_params(focalTweetId, cursor=None):
 def raw_tweet_to_parsed(tweet_result):
     return tweetparse.parse_one_tweet(tweet_result['legacy'], tweet_result['core']['user_results']['result'])
 
+DELETED_REST_ID = -1
+LOCKED_REST_ID = 0
+def tombstone_tweet_to_parsed(tweet_result, entry, parent_tweet):
+    is_deleted = "deleted" in tweet_result['tombstone']['text']['text']
+    tombstone_user_data = {
+        "rest_id": DELETED_REST_ID if is_deleted else LOCKED_REST_ID,
+        "legacy": {
+            "screen_name": "[deleted]" if is_deleted else "[locked]",
+        }
+    }
+    tombstone_tweet = {
+        # entry ids are tweet-XXXXX for timeline items and conversationthread-XXXX-tweet-XXXX in modules
+        "id_str": entry['entryId'].split('-')[-1],
+        "in_reply_to_status_id_str": parent_tweet and parent_tweet['status_id'],
+        "in_reply_to_user_id_str": parent_tweet and parent_tweet['user_id'],
+        "in_reply_to_screen_name": parent_tweet and parent_tweet['username'],
+        "full_text": "[deleted]" if is_deleted else "[locked]",
+        "created_at": None
+    }
+    return tweetparse.parse_one_tweet(tombstone_tweet, tombstone_user_data)
+
 rate_limit_remaining = 150
 rate_limit_reset = 0
 def ratelimit_wait():
@@ -124,6 +145,28 @@ def update_ratelimit(headers):
     rate_limit_remaining = int(headers['x-rate-limit-remaining'])
     rate_limit_reset = int(headers['x-rate-limit-reset'])
 
+def parse_one_tweet(tweets, entry, is_module=False):
+    itemContent = entry['item' if is_module else 'content']['itemContent']
+    new_cursors = {}
+    new_tweets = []
+
+    if itemContent['itemType'] == "TimelineTimelineCursor":
+        new_cursors[itemContent['cursorType']] = itemContent['value']
+        # print("TM-cursor" if is_module else "TI-cursor", itemContent['cursorType'], itemContent['value'] )
+
+    elif itemContent['itemType'] == "TimelineTweet":
+        # deleted tweet or locked account
+        if itemContent['tweet_results']['result']['__typename'] == "TweetTombstone":
+            new_tweets.append(tombstone_tweet_to_parsed(itemContent['tweet_results']['result'],
+                                                        entry,
+                                                        tweets[-1] if tweets else None))
+            #print("TM" if is_module else "TI", [tombstone] )
+        else:
+            new_tweets.append(raw_tweet_to_parsed(itemContent['tweet_results']['result']))
+            #print("TM" if is_module else "TI", itemContent['tweet_results']['result']['legacy']['full_text'] )
+    
+    return new_cursors, new_tweets
+
 def fetch_tweet_detail(focalTweetId, cursor=None):
     ratelimit_wait()
     print("fetching", focalTweetId, "at cursor", cursor if cursor else "<none>")
@@ -136,30 +179,18 @@ def fetch_tweet_detail(focalTweetId, cursor=None):
 
     for instr in result['data']['threaded_conversation_with_injections_v2']['instructions']:
         if instr['type'] == "TimelineAddEntries":
-            for entry in instr['entries']:
+            for idx, entry in enumerate(instr['entries']):
                 if entry['content']['entryType'] == "TimelineTimelineItem":
-                    itemContent = entry['content']['itemContent']
-                
-                    if itemContent['itemType'] == "TimelineTimelineCursor":
-                        cursors[itemContent['cursorType']] = itemContent['value']
-                        # print("TC", itemContent['cursorType'], itemContent['value'] )
-
-                    elif itemContent['itemType'] == "TimelineTweet":
-                        tweets.append(raw_tweet_to_parsed(itemContent['tweet_results']['result']))
-                        #print("TI", itemContent['tweet_results']['result']['legacy']['full_text'] )
+                    new_cursors, new_tweets = parse_one_tweet(tweets, entry)
+                    cursors.update(new_cursors)
+                    tweets.extend(new_tweets)
                     
                 # timeline modules are boxes with more tweets in them, sometimes called "profile conversations"
                 elif entry['content']['entryType'] == "TimelineTimelineModule":
                     for item in entry['content']['items']:
-                        itemContent = item['item']['itemContent']
-
-                        if itemContent['itemType'] == "TimelineTimelineCursor":
-                            cursors[itemContent['cursorType']] = itemContent['value']
-                            # print("TM-cursor", itemContent['cursorType'], itemContent['value'])
-                        
-                        elif itemContent['itemType'] == "TimelineTweet":
-                            tweets.append(raw_tweet_to_parsed(itemContent['tweet_results']['result']))
-                            #print("TM", itemContent['tweet_results']['result']['legacy']['full_text'] )
+                        new_cursors, new_tweets = parse_one_tweet(tweets, item, is_module=True)
+                        cursors.update(new_cursors)
+                        tweets.extend(new_tweets)
 
     return (tweets, cursors)
 

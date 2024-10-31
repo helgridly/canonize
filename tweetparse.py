@@ -45,6 +45,11 @@ def parse_one_tweet(tweet, user_data = None):
     else:
         user_id = conf.USER_ID
         username = conf.USERNAME
+    
+    if tweet['created_at']:
+        created_at = datetime.datetime.strptime(tweet['created_at'], "%a %b %d %H:%M:%S %z %Y")
+    else:
+        created_at = None
 
     outweet = {
         "status_id" : tweet['id_str'],
@@ -57,6 +62,6 @@ def parse_one_tweet(tweet, user_data = None):
         "text" : tweet['full_text'],
         "mentions": parse_mentions(tweet),
         "urls": parse_urls(tweet),
-        "date": datetime.datetime.strptime(tweet['created_at'], "%a %b %d %H:%M:%S %z %Y")
+        "date": created_at
     }
     return outweet
