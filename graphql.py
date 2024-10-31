@@ -4,6 +4,7 @@ import json
 import urllib.parse
 import tweetparse
 import time
+import conf
 
 # trash we have to pass to twitter otherwise it gets mad
 default_features = {
@@ -163,7 +164,11 @@ def fetch_tweet_detail(focalTweetId, cursor=None):
     return (tweets, cursors)
 
 def fetch_tweet_context(tweet_id, context_pile, tweet_pile):
-
+    """
+    calls TweetDetails, paginating upwards, until we find a tweet we already know about
+    adds all tweets it encounters to the context_pile
+    returns a conversation id, and a list of tweets to add to the conversation
+    """
     # list of tweets we've added to the context pile from this conversation
     conversation_tweets_ids = []
     cursor = None
@@ -174,20 +179,38 @@ def fetch_tweet_context(tweet_id, context_pile, tweet_pile):
 
         # go in reverse order
         for tweet in tweets[::-1]:
+            print(tweet['status_id'], tweet['text'][:50])
+
             if tweet['status_id'] in context_pile or tweet['status_id'] in tweet_pile:
-                # it's either someone else's tweet that we've seen before, or
-                # it's one of our tweets (which we have also seen before)
-                known_parent_tweet = tweet
 
-                # it should have a conversation id, in which case we're done
-                context_pile_has_convid = tweet['status_id'] in context_pile and context_pile[tweet['status_id']].get('conversation_id')
-                tweet_pile_has_convid = tweet['status_id'] in tweet_pile and tweet_pile[tweet['status_id']].get('conversation_id')
-                assert context_pile_has_convid or tweet_pile_has_convid
+                # note that tweet detail sometimes returns tweets AFTER the focused tweet id,
+                # including potentially tweets from the user which REALLY messes things up
+                # hence the check for status_id < tweet_id - we only care if it's an earlier tweet
+                # we do still add it to the context pile and conversation though
+                if tweet['status_id'] < tweet_id:
 
-                break
+                    # it's either someone else's tweet that we've seen before, or
+                    # it's one of our tweets (which we have also seen before)
+                    known_parent_tweet = tweet_pile.get(tweet['status_id']) or context_pile.get(tweet['status_id'])
 
-            conversation_tweets_ids.append(tweet['status_id'])
-            context_pile[tweet['status_id']] = tweet
+                    # it should have a conversation id, in which case we're done                    
+                    try:
+                        assert known_parent_tweet and known_parent_tweet.get('conversation_id')
+                    except AssertionError as e:
+                        import pdb; pdb.set_trace()
+                        pass
+
+                    break
+            
+            if tweet['status_id'] == "1761502917972938761":
+                #import pdb; pdb.set_trace()
+                pass
+
+            if tweet['user_id'] != conf.USER_ID:
+                # if we've scanned ahead of focusedTweetId then we might find one of our own tweets,
+                # which we don't want to add to the context pile
+                conversation_tweets_ids.append(tweet['status_id'])
+                context_pile[tweet['status_id']] = tweet
 
         if not known_parent_tweet:
             # we got to the first tweet in the thread
