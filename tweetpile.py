@@ -9,6 +9,8 @@ import graphql
 import sys
 import pdb
 import pickle
+import textwrap
+import html
 
 def tweets_from_js(fname, js_prefix):
     """parse tweets.js into a list of tweets, sorted by status_id asc"""
@@ -87,6 +89,11 @@ def conversation_to_flat_tree(conv_tweets):
     root_tweets = [tweet for tweet in conv_tweets if tweet['parent_status_id'] is None]
     return [tweet for root in root_tweets for tweet in recursive_flatten(root)]
 
+def find_earliest_user_tweet(conv):
+    for tweet in conv:
+        if tweet['user_id'] == conf.USER_ID and tweet['date']:
+            return tweet['date']
+    return None
 
 def pile_to_conversations(pile):
     """we have a pile of tweets that we want to turn into threads
@@ -149,17 +156,12 @@ def pile_to_conversations(pile):
         save_context_pile(context_pile)
         save_tweetpile_resume(tweet['status_id'])
 
-    def find_earliest_date(conv):
-        for tweet in conv:
-            if tweet['date']:
-                return tweet['date']
-        return None
-
     # flatten each conversation
     # order conversations by the date of their first tweet
     flat_convs = { k: conversation_to_flat_tree(v) for k, v in conversations.items() }
-    sorted_convs = sortedcollections.ItemSortedDict(lambda k, v: find_earliest_date(v), flat_convs)
+    sorted_convs = sortedcollections.ItemSortedDict(lambda k, v: find_earliest_user_tweet(v), flat_convs)
     return sorted_convs
+
 
 def excepthook(type, value, traceback):
     pdb.post_mortem(traceback)
@@ -168,10 +170,5 @@ if __name__ == "__main__":
     sys.excepthook = excepthook
     pile = create_sorted_tweetpile()
     conversations = pile_to_conversations(pile)
+    print("done!")
 
-    # some ideas that'll help The Big Debug:
-    # - truncate or subset the tweet pile
-    # - save off the context pile as you go
-    
-    pdb.set_trace()
-    pass
