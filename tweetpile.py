@@ -80,7 +80,7 @@ def conversation_to_flat_tree(conv_tweets):
     def recursive_flatten(tweet):
         result = [tweet]
         for child in conv_tweets:
-            if child.parent_id == tweet.id:
+            if child['parent_status_id'] == tweet['status_id']:
                 result.extend(recursive_flatten(child))
         return result
 
