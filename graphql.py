@@ -151,15 +151,21 @@ def update_ratelimit(headers):
     rate_limit_reset = int(headers['x-rate-limit-reset'])
 
 def parse_one_tweet(tweets, entry, is_module=False):
-    itemContent = entry['item' if is_module else 'content']['itemContent']
+    item = entry['item' if is_module else 'content']
+    itemContent = item['itemContent']
     new_cursors = {}
     new_tweets = []
 
     if itemContent['itemType'] == "TimelineTimelineCursor":
         new_cursors[itemContent['cursorType']] = itemContent['value']
         # print("TM-cursor" if is_module else "TI-cursor", itemContent['cursorType'], itemContent['value'] )
+    
+    elif item.get('clientEventInfo', {}).get('component', '') == "related_tweet":
+        # no! bad twitter! don't inject things not in the conversation into the conversation!!!!!
+        pass
+    
+    elif itemContent['itemType'] == "TimelineTweet" and itemContent['tweet_results']: # sometimes tweet_results is empty(!!!)
 
-    elif itemContent['itemType'] == "TimelineTweet":
         # deleted tweet or locked account
         if itemContent['tweet_results']['result']['__typename'] == "TweetTombstone":
             new_tweets.append(tombstone_tweet_to_parsed(itemContent['tweet_results']['result'],
@@ -277,8 +283,8 @@ def fetch_tweet_context(tweet_id, context_pile, tweet_pile):
 
 if __name__ == "__main__":
     # testing
-    
-    #tweets, cursors = fetch_tweet_detail("1850670820894421069", "DwAAAPAAHCaEgLn98s7crjM1AgAA")
+    import pdb; pdb.set_trace()    
+    tweets, cursors = fetch_tweet_detail("1850260126638489707")
     context_pile = {}
     tweet_pile = {}
     conv_id, conv_tweet_ids = fetch_tweet_context("1850670820894421069", context_pile, tweet_pile)
