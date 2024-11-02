@@ -8,12 +8,12 @@ see the design doc: https://docs.google.com/document/d/1pE_3Kb1y5cpvGn1ZXR3OEhv9
 - [x] clean up tweets.js into pile
 - [x] synthesize tweets into conversations
 - [x] TweetDetail graphql for finding missing parents
-- [ ] fetch tweet context from tweetpile.py
+- [x] fetch tweet context from tweetpile.py
 - [x] flatten conversations in depth-first tweet order
+- [ ] jekyll page template
 
 ## next
 
-- [ ] jekyll page template
 - [ ] twinder
 - [ ] remove reviewed mark
 - [ ] stand up jekyll site
