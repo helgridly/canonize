@@ -140,7 +140,7 @@ rate_limit_reset = 0
 def ratelimit_wait():
     print("Rate limit remaining", rate_limit_remaining, "reset in", rate_limit_reset - time.time(), "seconds")
     now = time.time()
-    if rate_limit_remaining < 10 and now < rate_limit_reset:
+    if rate_limit_remaining < 5 and now < rate_limit_reset:
         print("Rate limit, sleeping", (rate_limit_reset - now) + 5, "seconds")
         time.sleep((rate_limit_reset - now) + 5)
 

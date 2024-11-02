@@ -123,6 +123,7 @@ def pile_to_conversations(pile):
                 # we don't know of this tweet and will have to fetch it
                 # fetch_tweet_context updates the context_pile with the parent tweet and all the ones above it
                 # returns a conversation id and a list of tweets to add to the conversation
+                print("looking for parent tweet", tweet['parent_status_id'], "for tweet", tweet['status_id'])
                 conv_id, conv_tweet_ids = graphql.fetch_tweet_context(tweet['parent_status_id'], context_pile, pile)
                 
                 # found a new conversation
@@ -167,9 +168,6 @@ if __name__ == "__main__":
     sys.excepthook = excepthook
     pile = create_sorted_tweetpile()
     conversations = pile_to_conversations(pile)
-
-    # OK whatever - we have to debug something that's going screwy here, but i'm tired and outta time for the day
-    # https://x.com/polyascension/status/1770698268562858297
 
     # some ideas that'll help The Big Debug:
     # - truncate or subset the tweet pile
