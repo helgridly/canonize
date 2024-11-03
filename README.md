@@ -27,15 +27,16 @@ bundle exec jekyll serve
 - [x] TweetDetail graphql for finding missing parents
 - [x] fetch tweet context from tweetpile.py
 - [x] flatten conversations in depth-first tweet order
-- [ ] jekyll install + site setup
-- [ ] jekyll page template
+- [x] jekyll install + site setup
+- [x] jekyll page template
 
 ## next
 
 - [ ] twinder
 - [ ] remove reviewed mark
-- [ ] stand up jekyll site
+- [ ] walk drafts and canon and extract jekyll front matter items (see codeium)
 - [ ] explorer with filtering etc
+- [ ] domain
 
 # notes, design
 

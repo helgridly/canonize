@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<article class="page">
+
+  {% unless page.hidetitle %}<h1>{{ page.title }}</h1> {% endunless %}
+
+  <div class="entry">
+    {{ content }}
+  </div>
+
+  <div class="sourcing">
+    <hr>
+    <i>posted:</i>
+    {{ page.creation_date | date: "%B %e, %Y" }}<br/>
+    <i>last updated:</i>
+    {{ page.last_updated | date: "%B %e, %Y" }}<br/>
+    <i>source threads:</i>
+    {% for source in page.sources %}
+    <a href="https://twitter.com/selflathing/status/{{ source }}">{{ source }}</a>
+    {% endfor %}
+  </div>
+</article>
