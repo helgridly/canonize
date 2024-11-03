@@ -164,6 +164,21 @@ cython_debug/
 # vscode
 .vscode/
 
+# jekyll / gh-pages stuff
+_site
+.DS_Store
+.jekyll
+.jekyll-metadata
+.jekyll-cache
+.bundle
+.sass-cache
+Gemfile.lock
+node_modules
+package.json
+*.gem
+*.gemspec
+vendor
+
 # this project's scratch files
 scratch/**
 input/**
