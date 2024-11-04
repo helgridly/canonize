@@ -22,6 +22,18 @@ bundle exec jekyll serve
 
 ## now
 
+- [ ] do some reviewing and create some articles!
+- [ ] document the process in this readme
+
+## later
+
+- [ ] domain
+- [ ] add "random button"
+- [ ] make gen_contents.py a github action instead
+- [ ] GitHub codespaces; install python + ruby devcontainer features
+
+## done
+
 - [x] clean up tweets.js into pile
 - [x] synthesize tweets into conversations
 - [x] TweetDetail graphql for finding missing parents
@@ -36,13 +48,7 @@ bundle exec jekyll serve
 - [x] add "show drafts" checkbox to explorer
 - [x] write blurb text for home and about pages
 - [x] fix date sorting
-- [ ] do some reviewing and create some articles!
 
-## later
-
-- [ ] domain
-- [ ] add "random button"
-- [ ] make gen_contents.py a github action instead
 
 # notes, design
 
