@@ -81,7 +81,7 @@ def generate_draft(conv):
     for tweet in conv:
         if tweet['username'] != last_user:
             post += '> ' + tweet['username'] + "  \n\n"
-        post += tweet['text'].replace('\n', '  \n') + "  \n\n"
+        post += html.unescape(tweet['text']).replace('\n', '  \n') + "  \n\n"
         last_user = tweet['username']
 
     file_contents = templates.canon.format(title=title,
@@ -123,7 +123,7 @@ if __name__ == "__main__":
     flat_convs = { k: tweetpile.conversation_to_flat_tree(v) for k, v in conversations.items() }
 
     # if you want to filter further (e.g. minimum 3 tweets from the user), do it here
-    # flat_convs = { k: v for k, v in flat_convs.items() if len(t for t in v if t['user_id'] == conf.USER_ID) >= 3 }
+    flat_convs = { k: v for k, v in flat_convs.items() if len([t for t in v if t['user_id'] == conf.USER_ID]) >= 3 }
 
     # filter out reviewed tweets
     reviewed = scratch.load_reviewed()
