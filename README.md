@@ -34,13 +34,14 @@ bundle exec jekyll serve
 - [x] walk drafts and canon and extract jekyll front matter items (see codeium)
 - [x] explorer with filtering etc
 - [x] add "show drafts" checkbox to explorer
-- [ ] add "random button"
+- [x] write blurb text for home and about pages
+- [x] fix date sorting
+- [ ] do some reviewing and create some articles!
 
-## next
+## later
 
-- [ ] fix date sorting (see if it works if page dates are correct)
 - [ ] domain
-- [ ] write blurb text for home and about pages
+- [ ] add "random button"
 - [ ] make gen_contents.py a github action instead
 
 # notes, design

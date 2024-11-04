@@ -73,8 +73,9 @@ window.onload = function() {
               },
               headerFilterFunc: "like",
             },
-            { title: "Created", field: "creation_date", sorter: "datetime" },
-            { title: "Updated", field: "last_updated", sorter: "datetime" },
+
+            { title: "Created", field: "creation_date", sorter: "date", sorterParams: { format: "iso", alignEmptyValues:"top", } },
+            { title: "Updated", field: "last_updated", sorter: "date", sorterParams: { format: "iso", alignEmptyValues:"top", } },
             { title: "Path", field: "path", sorter: "string", visible: false},
             { title: "Draft", field: "draft", sorter: "boolean", visible: false },
           ]

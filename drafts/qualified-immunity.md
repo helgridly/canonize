@@ -1,8 +1,8 @@
 ---
 layout: canon
 title: qualified immunity is buddhism for cops
-creation_date: 2024-10-26
-last_updated: 2024-10-26
+creation_date: 2024-10-26 03:13:48+00:00
+last_updated: 2024-10-26 03:13:48+00:00
 mentions: ["spockinabeanie", "swampentity"]
 tags: ["shitpost"]
 sources: [1850131931364573190, 1850131933352558956]
