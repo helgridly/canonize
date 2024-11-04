@@ -29,12 +29,11 @@ bundle exec jekyll serve
 - [x] flatten conversations in depth-first tweet order
 - [x] jekyll install + site setup
 - [x] jekyll page template
-- [ ] twinder
-
+- [x] twinder
+- [ ] handle reviewed mark (incl. on convo update - see gdoc)
 
 ## next
 
-- [ ] remove reviewed mark on convo update - see gdoc
 - [ ] walk drafts and canon and extract jekyll front matter items (see codeium)
 - [ ] explorer with filtering etc
 - [ ] should tags link back to explorer?
