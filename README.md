@@ -30,7 +30,7 @@ bundle exec jekyll serve
 - [x] jekyll install + site setup
 - [x] jekyll page template
 - [x] twinder
-- [ ] handle reviewed mark (incl. on convo update - see gdoc)
+- [x] handle reviewed mark (incl. on convo update - see gdoc)
 
 ## next
 

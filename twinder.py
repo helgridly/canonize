@@ -1,7 +1,7 @@
-import itertools
 import pdb
 import textwrap
 import html
+import scratch
 import tweetpile
 import sortedcollections
 import templates
@@ -69,7 +69,6 @@ def generate_draft(conv):
     while(not good_filename):
         default_filename = slugify.slugify(title, stopwords=templates.stopwords)
         filename = input(f"enter filename, or hit Enter for {default_filename}: ") or default_filename
-
         if os.path.exists(f"drafts/{filename}.md"):
             overwrite = input("a draft file already exists with this name, overwrite it? (y/n): ")
             if overwrite != 'y':
@@ -97,21 +96,38 @@ def generate_draft(conv):
         f.write(file_contents)
     print(f"wrote conversation to drafts/{filename}.md")
 
+def review_conversations(conversations, reviewed):
+    print(f"conversations to review: {len(conversations)}")
+    for conv_id, conv in conversations.items():
+        if conv_id not in reviewed or reviewed[conv_id] != { t['status_id'] for t in conv }:
+            print_conversation(conv)
+            keep = input("(k)eep or (s)kip? ") == 'k'
+            if keep:
+                generate_draft(conv)
+            reviewed[conv_id] = reviewed.get(conv_id, set()) | { t['status_id'] for t in conv }
+            scratch.save_reviewed(reviewed)
 
 def excepthook(type, value, traceback):
     pdb.post_mortem(traceback)
 
+def conv_is_reviewed(conv_id, conv, reviewed):
+    """a conversation has been reviewed if we've already seen all the user's tweets"""
+    if conv_id not in reviewed:
+        return False
+    
+    conv_user_tweets = { t['status_id'] for t in conv if t['user_id'] == conf.USER_ID }
+    return all( c in reviewed[conv_id] for c in conv_user_tweets )
+
 if __name__ == "__main__":
-    conversations = tweetpile.load_conversations()
-
+    conversations = scratch.load_conversations()
     flat_convs = { k: tweetpile.conversation_to_flat_tree(v) for k, v in conversations.items() }
-    sorted_convs = sortedcollections.ItemSortedDict(lambda k, v: tweetpile.find_earliest_user_tweet(v), flat_convs)
 
-    # TODO: mark convo id as reviewed in scratch/
+    # if you want to filter further (e.g. minimum 3 tweets from the user), do it here
+    # flat_convs = { k: v for k, v in flat_convs.items() if len(t for t in v if t['user_id'] == conf.USER_ID) >= 3 }
 
-    for conv_id, conv in sorted_convs.items():
-        print_conversation(conv)
-        keep = input("(k)eep or (s)kip? ") == 'k'
-        if keep:
-            generate_draft(conv)
-    pass
+    # filter out reviewed tweets
+    reviewed = scratch.load_reviewed()
+    unreviewed = { k: v for k, v in flat_convs.items() if not conv_is_reviewed(k, v, reviewed) }
+    sorted_unreviewed = sortedcollections.ItemSortedDict(lambda k, v: tweetpile.find_earliest_user_tweet(v), unreviewed)
+
+    review_conversations(sorted_unreviewed, reviewed)

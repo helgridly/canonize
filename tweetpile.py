@@ -1,16 +1,12 @@
 import json
 import sortedcollections
 import conf
-import datetime
-import re
-import itertools
+import scratch
 import tweetparse
 import graphql
 import sys
 import pdb
-import pickle
-import textwrap
-import html
+import copy
 
 def tweets_from_js(fname, js_prefix):
     """parse tweets.js into a list of tweets, sorted by status_id asc"""
@@ -44,41 +40,6 @@ def create_sorted_tweetpile():
 
     alive_tweets.update(deleted_tweets)
     return alive_tweets
-
-def save_conversations(conversations):
-    with open("scratch/conversations.pkl", "wb") as f:
-        pickle.dump(conversations, f)
-
-def load_conversations():
-    # if we have a conversations.pkl file, load it
-    try:
-        with open("scratch/conversations.pkl", "rb") as f:
-            return pickle.load(f)
-    except FileNotFoundError:
-        return {}
-
-def save_context_pile(context_pile):
-    with open("scratch/context_pile.pkl", "wb") as f:
-        pickle.dump(context_pile, f)
-
-def load_context_pile():
-    # if we have a context_pile.pkl file, load it
-    try:
-        with open("scratch/context_pile.pkl", "rb") as f:
-            return pickle.load(f)
-    except FileNotFoundError:
-        return {}
-
-def save_tweetpile_resume(status_id):
-    with open("scratch/tweetpile_resume", "w") as f:
-        f.write(status_id)
-
-def load_tweetpile_resume():
-    try:
-        with open("scratch/tweetpile_resume", "r") as f:
-            return f.read()
-    except FileNotFoundError:
-        return 0
 
 def conversation_to_flat_tree(conv_tweets):
     def recursive_flatten(tweet):
@@ -114,9 +75,11 @@ def pile_to_conversations(pile):
     """
 
     # resume
-    conversations = load_conversations()
-    context_pile = load_context_pile()
-    last_tweet_id = load_tweetpile_resume()
+    conversations = scratch.load_conversations()
+    old_conversations = copy.deepcopy(conversations)
+
+    context_pile = scratch.load_context_pile()
+    last_tweet_id = scratch.load_tweetpile_resume()
     pile_index = pile.keys().index(last_tweet_id) if last_tweet_id else 0
 
     # if resuming, populate the tweet pile with conversation_ids
@@ -162,9 +125,9 @@ def pile_to_conversations(pile):
         tweet['conversation_id'] = parent['conversation_id']
         conversations[tweet['conversation_id']].append(tweet)
 
-        save_conversations(conversations)
-        save_context_pile(context_pile)
-        save_tweetpile_resume(tweet['status_id'])
+        scratch.save_conversations(conversations)
+        scratch.save_context_pile(context_pile)
+        scratch.save_tweetpile_resume(tweet['status_id'])
 
     # flatten each conversation
     # order conversations by the date of their first tweet
