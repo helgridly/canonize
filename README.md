@@ -40,6 +40,7 @@ bundle exec jekyll serve
 - [ ] should tags link back to explorer?
 - [ ] "random button" - how do we do "give me another", or do we not and just force user to browser back?
 - [ ] domain
+- [ ] write blurb text for home and about pages
 
 # notes, design
 
