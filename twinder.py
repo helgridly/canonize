@@ -57,6 +57,13 @@ if __name__ == "__main__":
     flat_convs = { k: tweetpile.conversation_to_flat_tree(v) for k, v in conversations.items() }
     sorted_convs = sortedcollections.ItemSortedDict(lambda k, v: tweetpile.find_earliest_user_tweet(v), flat_convs)
 
+    # TODO: given a conversation, generate a markdown page that looks like qualified-immunity.md
+    # ask for filename, tags, title
+    # generate creation + last updated date (user tweets, not everyone), mentions, source ID (earliest user tweet), conversation id
+    # check to see if you're about to stomp on filename and ask are you sure
+    # render, and write to drafts/
+    # mark convo id as reviewed in scratch/
+
     for conv_id, conv in conversations.items():
         print_conversation(conv)
         pdb.set_trace()

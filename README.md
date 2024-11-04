@@ -29,13 +29,16 @@ bundle exec jekyll serve
 - [x] flatten conversations in depth-first tweet order
 - [x] jekyll install + site setup
 - [x] jekyll page template
+- [ ] twinder
+
 
 ## next
 
-- [ ] twinder
-- [ ] remove reviewed mark
+- [ ] remove reviewed mark on convo update - see gdoc
 - [ ] walk drafts and canon and extract jekyll front matter items (see codeium)
 - [ ] explorer with filtering etc
+- [ ] should tags link back to explorer?
+- [ ] "random button" - how do we do "give me another", or do we not and just force user to browser back?
 - [ ] domain
 
 # notes, design
