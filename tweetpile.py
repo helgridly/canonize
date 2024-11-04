@@ -88,7 +88,15 @@ def conversation_to_flat_tree(conv_tweets):
                 result.extend(recursive_flatten(child))
         return result
 
-    root_tweets = [tweet for tweet in conv_tweets if tweet['parent_status_id'] is None]
+    # remove dupes
+    status_ids = set()
+    deduped_conv = []
+    for tweet in conv_tweets:
+        if tweet["status_id"] not in status_ids:
+            status_ids.add(tweet["status_id"])
+            deduped_conv.append(tweet)
+
+    root_tweets = [tweet for tweet in deduped_conv if tweet['parent_status_id'] is None]
     return [tweet for root in root_tweets for tweet in recursive_flatten(root)]
 
 def find_earliest_user_tweet(conv):
