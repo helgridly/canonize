@@ -37,6 +37,8 @@ def tweets_from_js(fname, js_prefix):
 
 
 def create_sorted_tweetpile():
+    # TODO: there's also note-tweet.js, for long tweets, and community-tweet.js, for communities
+    # i don't have either of these so i don't care. but could merge them with alive_tweets
     alive_tweets = tweets_from_js("input/tweets.js", "window.YTD.tweets.part0")
     deleted_tweets = tweets_from_js("input/deleted-tweets.js", "window.YTD.deleted_tweets.part0")
 
