@@ -31,15 +31,16 @@ bundle exec jekyll serve
 - [x] jekyll page template
 - [x] twinder
 - [x] handle reviewed mark (incl. on convo update - see gdoc)
+- [x] walk drafts and canon and extract jekyll front matter items (see codeium)
+- [ ] explorer with filtering etc
 
 ## next
 
-- [ ] walk drafts and canon and extract jekyll front matter items (see codeium)
-- [ ] explorer with filtering etc
 - [ ] should tags link back to explorer?
 - [ ] "random button" - how do we do "give me another", or do we not and just force user to browser back?
 - [ ] domain
 - [ ] write blurb text for home and about pages
+- [ ] make gen_contents.py a github action instead
 
 # notes, design
 
