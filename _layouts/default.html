@@ -12,6 +12,11 @@
     <meta name="theme-color" content="#000000">
     <link rel="icon" type="image/ico" sizes="32x32" href="{{ site.baseurl }}/images/favicon.ico">
     {% include analytics_head.html %}
+
+    <script>
+      /*to prevent Firefox FOUC, this must be here*/
+      let FF_FOUC_FIX;
+    </script>
   </head>
 
   <body>
@@ -27,8 +32,7 @@
             </div>
 
             <nav>
-              <a href="{{ site.baseurl }}/">Home</a>
-              <a href="{{ site.baseurl }}/about">About</a>
+              <a href="{{ site.baseurl }}/about">huh?</a>
               <!--<a href="{{ site.baseurl }}/search">Search</a>-->
             </nav>
           </header>

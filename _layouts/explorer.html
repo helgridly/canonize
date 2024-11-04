@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<script src="{{ site.baseurl }}/js/explorer.js"></script>
+<link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.0/dist/js/tabulator.min.js"></script>
+
+
+<article class="page">
+
+  {% unless page.hidetitle %}<h1>{{ page.title }}</h1> {% endunless %}
+
+  <div class="entry">
+    {{ content }}
+  </div>
+
+<div id="data-table"></div>
+
+</article>
