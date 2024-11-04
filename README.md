@@ -33,12 +33,12 @@ bundle exec jekyll serve
 - [x] handle reviewed mark (incl. on convo update - see gdoc)
 - [x] walk drafts and canon and extract jekyll front matter items (see codeium)
 - [x] explorer with filtering etc
-- [ ] add "show drafts" checkbox to explorer
+- [x] add "show drafts" checkbox to explorer
 - [ ] add "random button"
 
 ## next
 
-- [ ] should tags link back to explorer?
+- [ ] fix date sorting (see if it works if page dates are correct)
 - [ ] domain
 - [ ] write blurb text for home and about pages
 - [ ] make gen_contents.py a github action instead

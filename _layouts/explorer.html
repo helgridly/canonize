@@ -2,6 +2,7 @@
 layout: default
 ---
 
+<script src="https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js" integrity="sha256-/TZdvWBQbZdgT95AgMF6nDLyjhe3QdOMpw4VLnkcgq4=" crossorigin="anonymous"></script>
 <script src="{{ site.baseurl }}/js/explorer.js"></script>
 <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
 <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.0/dist/js/tabulator.min.js"></script>
@@ -15,6 +16,8 @@ layout: default
     {{ content }}
   </div>
 
+<input type="checkbox" id="show-drafts" name="show-drafts">
+<label for="show-drafts">show drafts 📝</label>
 <div id="data-table"></div>
 
 </article>

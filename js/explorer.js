@@ -1,4 +1,5 @@
 
+
 window.onload = function() {
     fetch("contents.json")
       .then(response => response.json())
@@ -18,6 +19,8 @@ window.onload = function() {
         const table = new Tabulator("#data-table", {
           data: data,
           layout: "fitColumns",
+          initialSort: [
+            { column: "last_updated", dir: "desc" }],
           columns: [
             { 
               title: "Title", 
@@ -28,7 +31,13 @@ window.onload = function() {
               headerFilterPlaceholder: "Search titles...", // Optional placeholder text
               // format the title as an href using the path column on this row
               formatter: function(cell, formatterParams, onRendered) {
-                return '<a href="' + cell.getRow().getCell("path").getValue() + '">' + cell.getValue() + '</a>';
+                cell_text = cell.getValue();
+                path = cell.getRow().getCell("path").getValue()
+                if(cell.getRow().getCell("draft").getValue()) {
+                    cell_text = "📝" + cell_text
+                }
+                
+                return '<a href="' + path + '">' + cell_text + '</a>';
               }
             },
             {
@@ -70,5 +79,23 @@ window.onload = function() {
             { title: "Draft", field: "draft", sorter: "boolean", visible: false },
           ]
         });
+
+        table.on("tableBuilt", function() {
+            // initialFilter doesn't work for some reason
+            table.setFilter("draft", "=", false)    
+        })
+
+        // get the show-drafts checkbox
+        const showDraftsCheckbox = document.getElementById("show-drafts");
+        //set its onchange
+        showDraftsCheckbox.addEventListener("change", function() {
+          if( this.checked ) {
+            table.removeFilter("draft", "=", false)
+          } else {
+            // add tabulator boolean filter that will only show non-drafts
+            table.setFilter("draft", "=", false)
+          }
+        })
+
       });
   };
