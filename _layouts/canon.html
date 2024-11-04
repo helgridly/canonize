@@ -12,6 +12,7 @@ layout: default
 
   <div class="sourcing">
     <hr>
+    <i>tags:</i> {% for tag in page.tags %}{{tag}}{% unless forloop.last %}, {% endunless %}{% endfor %}<br/>
     <i>posted:</i>
     {{ page.creation_date | date: "%B %e, %Y" }}<br/>
     <i>last updated:</i>
@@ -19,6 +20,6 @@ layout: default
     <i>source threads:</i>
     {% for source in page.sources %}
     <a href="https://twitter.com/selflathing/status/{{ source }}">{{ source }}</a>
-    {% endfor %}
+    {% endfor %}<br/>    
   </div>
 </article>
