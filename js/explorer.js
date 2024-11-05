@@ -44,13 +44,15 @@ window.onload = function() {
                 title: "Tags",
                 field: "tags",
                 headerFilter: "list",
+                headerFilterPlaceholder: "choose tag",
                 headerFilterParams: {
-                  values: [...new Set(data.flatMap(item => (item.tags && item.tags.split(", ")) || []))],
-                  autocomplete: true,
-                  filterFunc : function(term, label, value, item) {
-                      if (!value) return false;
-                      return value.includes(term);
-                  }
+                  values: [...new Set(data.flatMap(item => (item.tags && item.tags.split(", ")) || []))].sort(),
+                  autocomplete: false, clearable: true,
+                  //autocomplete: true,
+                  //filterFunc : function(term, label, value, item) {
+                  //    if (!value) return false;
+                  //    return value.includes(term);
+                  //}
                 },
                 headerFilterFunc: "like",
               },
@@ -58,24 +60,27 @@ window.onload = function() {
               title: "Mentions",
               field: "mentions",
               headerFilter: "list",
+              headerFilterPlaceholder: "choose user",
               headerFilterParams: {
-                values: [...new Set(data.flatMap(item => (item.mentions && item.mentions.split(', ')) || []))],
-                // autocomplete: false, clearable: true gives us what we want (a selectable dropdown), but doesn't work
+                values: [...new Set(data.flatMap(item => (item.mentions && item.mentions.split(', ')) || []))].sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase())),
+                autocomplete: false, clearable: true, //gives us what we want (a selectable dropdown), but doesn't work
                 // in firefox: https://github.com/olifolkerd/tabulator/issues/3813#issuecomment-1610984347
                 // because the X-to-clear isn't displayed by default; even with an about:config flag set, see the "some issues
                 // still to be solved" link - this is a FF bug
-                // so in the meantime we use autocomplete and make the user type
-                autocomplete: true,
-                filterFunc : function(term, label, value, item) {
-                    if (!value) return false;
-                    return value.includes(term);
-                }
+                
+                // so in the meantime we use autocomplete and make the user type; uncomment below to do that
+                //autocomplete: true,
+                //filterFunc : function(term, label, value, item) {
+                //    if (!value) return false;
+                //    return value.includes(term);
+                //}
               },
               headerFilterFunc: "like",
             },
 
-            { title: "Created", field: "creation_date", sorter: "date", sorterParams: { format: "iso", alignEmptyValues:"top", } },
             { title: "Updated", field: "last_updated", sorter: "date", sorterParams: { format: "iso", alignEmptyValues:"top", } },
+            { title: "Created", field: "creation_date", sorter: "date", sorterParams: { format: "iso", alignEmptyValues:"top", } },
+
             { title: "Path", field: "path", sorter: "string", visible: false},
             { title: "Draft", field: "draft", sorter: "boolean", visible: false },
           ]
