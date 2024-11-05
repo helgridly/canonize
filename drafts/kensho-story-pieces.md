@@ -10,6 +10,8 @@ sources: ['1776672932443337179']
 
 (kensho thread to come)
 
+(note: link to this from "emptiness is the wrong word")
+
 > seflathing  
 
 @neats29 I had mine immediately after "well, at least I can be *a* Buddha"; and then everything all at once said "I am *all* Buddhas", and I was. self-as-Everything: tree, ocean, room I'm in. And other people, though it felt morally abhorrent to "be" someone else, so I didn't.  
