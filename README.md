@@ -30,7 +30,7 @@ bundle exec jekyll serve
 - [ ] domain
 - [ ] add "random button"
 - [ ] make gen_contents.py a github action instead
-- [ ] GitHub codespaces; install python + ruby devcontainer features
+
 
 ## done
 
@@ -48,6 +48,7 @@ bundle exec jekyll serve
 - [x] add "show drafts" checkbox to explorer
 - [x] write blurb text for home and about pages
 - [x] fix date sorting
+- [x] GitHub codespaces; install python + ruby devcontainer features
 
 
 # notes, design
