@@ -98,7 +98,6 @@ If you ever re-download your archive, you can update the tweet .js files in `inp
 
 ## next
 
-- [ ] render less ugly date in explorer
 - [ ] add "random button"
 
 ## later
@@ -124,3 +123,4 @@ If you ever re-download your archive, you can update the tweet .js files in `inp
 - [x] GitHub codespaces; install python + ruby devcontainer features
 - [x] document the process in this readme
 - [x] domain
+- [x] render less ugly date in explorer
