@@ -14,4 +14,6 @@ Over time this has resulted in a decent body of work - it turns out I have Thing
 
 This project is an attempt to find out. There's [some machinery](https://github.com/helgridly/canonize) on the backend that shows me Twitter threads I've participated in, and lets me select the ones I think might be interesting. Those go into a pile of drafts, which I manually consolidate and tag, sometimes expand on, and then publish here as "canon".
 
+I am still sorting through the backlog of tweets, so expect this site to fill out as I have time to work on it in the coming weeks and months.
+
 [Go explore it!](..)
