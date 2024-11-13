@@ -17,7 +17,7 @@ sources: ['1820892920016507305', '1787264252396331491']
 
 One does not be in Paris by behaving as if you're in Paris, then peeking to check to see if you are and feeling bad about yourself when you're not.
 
-You have to do some other things that are _not already being in Paris_: find passport, book flights, go to airport, board plane, etc. Being in Paris is a consequence of those things happening.
+You have to do some other things that are _not already being in Paris_: find passport, book flights, go to airport, board plane, etc. Being in Paris is a consequence of that process happening.
 
 I call this "cargo culting the outcome" because it is akin to standing on the runway waving glowing sticks around in the hope that it will summon an airplane. There is a process to summoning an airplane, and it's not waving the sticks: waving the sticks is what happens once the plane has arrived.
 
