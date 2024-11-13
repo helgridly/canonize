@@ -1,2 +1,2 @@
-USERNAME = "seflathing"
+USERNAME = "selflathing"
 USER_ID = "1759799760712572928"
