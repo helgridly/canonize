@@ -98,6 +98,7 @@ If you ever re-download your archive, you can update the tweet .js files in `inp
 
 ## next
 
+- [ ] render less ugly date in explorer
 - [ ] add "random button"
 
 ## later
