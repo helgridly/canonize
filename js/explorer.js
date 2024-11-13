@@ -1,7 +1,6 @@
 
-
 window.onload = function() {
-    fetch("contents.json")
+    fetch("contents.json?version=" + Date.now())
       .then(response => response.json())
       .then(data => {
         
