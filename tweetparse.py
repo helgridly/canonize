@@ -27,7 +27,7 @@ def parse_mentions(tweet):
                 result.append({"username":qt_user}) # yikes, no id
 
     if mentions:
-        result.extend([{"username": m['screen_name'], "user_id": m['id_str']} for m in mentions])
+        result.extend([{"username": m['screen_name'], "user_id": m['id_str']} for m in mentions if m['screen_name'] != conf.USERNAME])
 
     return result
 

@@ -3,7 +3,7 @@ layout: canon
 title: boozecels vs spritz rotators
 creation_date: 2024-05-28 23:46:08+00:00
 last_updated: 2024-05-29 00:34:53+00:00
-mentions: ['soundrotator', 'selflathing', 'sonikudzu']
+mentions: ['soundrotator', 'sonikudzu']
 tags: ['shitpost']
 sources: ['1795602488256803087']
 ---

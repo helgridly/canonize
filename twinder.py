@@ -58,7 +58,7 @@ def generate_draft(conv):
 
     creation_date = by_date[0]['date']
     last_updated = by_date[-1]['date']
-    mentions = list({ mention['username'] for tweet in conv for mention in tweet['mentions'] })
+    mentions = list({ mention['username'] for tweet in conv for mention in tweet['mentions'] if mention['username'] != conf.USERNAME })
     sources = [by_date[0]['status_id']]
 
     # prompt for these

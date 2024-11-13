@@ -3,7 +3,7 @@ layout: canon
 title: faking it til you make it is inauthentic
 creation_date: 2024-05-05 23:32:58+00:00
 last_updated: 2024-05-06 01:33:32+00:00
-mentions: ['polyascension', 'selflathing']
+mentions: ['polyascension']
 tags: ['']
 sources: ['1787264252396331491']
 ---

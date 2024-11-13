@@ -3,7 +3,7 @@ layout: canon
 title: kensho story, pieces
 creation_date: 2024-04-06 18:06:50+00:00
 last_updated: 2024-04-07 20:33:18+00:00
-mentions: ['djpinnington', 'neats29', 'selflathing', 'smallkewlhuman', 'frideswyth']
+mentions: ['djpinnington', 'neats29', 'smallkewlhuman', 'frideswyth']
 tags: ['awakening', 'buddhism', 'zen', 'biographical']
 sources: ['1776672932443337179']
 ---

@@ -3,7 +3,7 @@ layout: canon
 title: why didn't i jump in front of that train?
 creation_date: 2024-05-09 03:06:00+00:00
 last_updated: 2024-05-10 22:08:42+00:00
-mentions: ['selflathing']
+mentions: []
 tags: ['healing', 'growth', journal]
 sources: ['1788389943498215438', '1789054980818665574']
 ---
