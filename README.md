@@ -96,18 +96,13 @@ If you ever re-download your archive, you can update the tweet .js files in `inp
 
 # development TODOs
 
-## now
+## next
 
-- [x] document the process in this readme
-- [ ] do some reviewing and create some articles!
-
+- [ ] add "random button"
 
 ## later
 
-- [ ] domain
-- [ ] add "random button"
 - [ ] make gen_contents.py a github action instead
-
 
 ## done
 
@@ -119,16 +114,12 @@ If you ever re-download your archive, you can update the tweet .js files in `inp
 - [x] jekyll install + site setup
 - [x] jekyll page template
 - [x] twinder
-- [x] handle reviewed mark (incl. on convo update - see gdoc)
-- [x] walk drafts and canon and extract jekyll front matter items (see codeium)
+- [x] handle reviewed mark
+- [x] walk drafts and canon and extract jekyll front matter items
 - [x] explorer with filtering etc
 - [x] add "show drafts" checkbox to explorer
 - [x] write blurb text for home and about pages
 - [x] fix date sorting
 - [x] GitHub codespaces; install python + ruby devcontainer features
-
-
-# notes, design
-
-- is only interested in YOUR tweets
-- therefore if people respond to a thread after your last tweet, it might not show up in the conversation
+- [x] document the process in this readme
+- [x] domain
