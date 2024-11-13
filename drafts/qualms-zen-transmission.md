@@ -2,10 +2,10 @@
 layout: canon
 title: qualms with Zen transmission
 creation_date: 2024-03-30 13:45:35+00:00
-last_updated: 2024-03-30 13:46:37+00:00
-mentions: ['IkkyusDen']
+last_updated: 2024-06-27 16:50:37+00:00
+mentions: ['IkkyusDen', 'sabethunder']
 tags: ['buddhism', 'zen']
-sources: ['1774070472302297133']
+sources: ['1774070472302297133', '1806430011206865138']
 ---
 
 (I have some difficult feelings about Zen transmission, and whether it means anything, that I might write up one day.)
@@ -27,3 +27,14 @@ Help tpot what do?
 @IkkyusDen A practitioner with deep and broad ties across the Zen community *might* be able to query the grapevine to determine whether a lineage is reputable or beset by drama. But that's nigh-impossible for a new student.  
 
 @IkkyusDen I wish I had an answer but I don't. As you can probably tell, this question is live for me! So far my approach is to try and find a different tradition that has a decent amount to say about "after kensho".  
+
+
+selflathing>     @nograsper @sabethunder the large number of awakened teachers who have still got up
+                 to all sorts of unpleasant behaviour suggests that one does not necessarily follow
+                 from the other
+                 1806430011206865138 @nograsper 1806427356526948828
+
+                 @nograsper @sabethunder taizan maezumi, eido shimano, richard baker come to mind
+                 without much effort. maezumi even atoned for having an affair with a student and
+                 even *still* ended up drowning in a bathtub because he was drunk
+                 1806430590478020664

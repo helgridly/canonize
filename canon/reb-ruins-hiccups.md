@@ -2,7 +2,7 @@
 layout: canon
 title: reb ruins hiccups
 creation_date: 2024-06-22 01:36:53+00:00
-last_updated: 2024-06-22 11:33:29+00:00
+last_updated: 2024-06-25 12:28:11+00:00
 mentions: ['soundrotator', 'Sassafrassalass']
 tags: ['shitpost', 'riffing']
 sources: ['1804327668541743470']
@@ -83,3 +83,9 @@ all because he never read that one thread on twitter that had 'INFOHAZARD' writt
 and with the near-sighted faith of a newborn child he lived happily ever after  
 
 *\*hic\**
+
+## three days later
+
+`<selflathing>` i have had the hiccups two days in a row now. i do not normally get hiccups. Reb has ruined me
+
+`<selflathing>` it is 7 hours later and i still have the hiccups
