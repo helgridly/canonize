@@ -12,7 +12,7 @@ sources: ['1776672932443337179']
 
 (note: link to this from "emptiness is the wrong word")
 
-> seflathing  
+> selflathing  
 
 @neats29 I had mine immediately after "well, at least I can be *a* Buddha"; and then everything all at once said "I am *all* Buddhas", and I was. self-as-Everything: tree, ocean, room I'm in. And other people, though it felt morally abhorrent to "be" someone else, so I didn't.  
 
@@ -20,7 +20,7 @@ sources: ['1776672932443337179']
 
 @selflathing interesting. can you say more about why it felt morally abhorrent?  
 
-> seflathing  
+> selflathing  
 
 so a bit more context: it seemed like i could "feel what it was like" to be a tree / the ocean / etc. even a small patch of ocean was very "big" and i backed off immediately, feeling like it'd overwhelm me  
 

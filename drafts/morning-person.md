@@ -10,7 +10,7 @@ sources: ['1784945367378722893']
 
 (Part of a story about how I became a morning person.)
 
-> seflathing  
+> selflathing  
 
 this was a nice thinking prompt! i've wanted to be a person who gets up  early for a long time: every time i get back from Europe and naturally  wake 5-6am for a week it is GLORIOUS. but i never seem to sustain it - i  stay up late, drift forward. why?  
 https://t.co/NLi0Uzmq2j  

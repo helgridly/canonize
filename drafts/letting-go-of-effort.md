@@ -10,7 +10,7 @@ sources: ['1773838767461175787']
 
 (I was trying way too hard when I wrote this thread, but it might factor into some writing about effort and surrender.)
 
-> seflathing  
+> selflathing  
 
 what is going on?  
 i feel pain  

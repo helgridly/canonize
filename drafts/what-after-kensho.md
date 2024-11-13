@@ -10,7 +10,7 @@ sources: ['1771993295956193469']
 
 (I think I was on the "what after kensho?" kick for a while longer and might find some more tweets about it.)
 
-> seflathing  
+> selflathing  
 
 lately been wondering what comes after subtractive practice. dismantle your old scripts, kensho, etc: tada.wav 🎉! then what? you're only halfway, need to rebuild. where's the guidance?  
 

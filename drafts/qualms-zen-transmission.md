@@ -18,7 +18,7 @@ And most people go a bit bonkers as soon as they get that status
   
 Help tpot what do?  
 
-> seflathing  
+> selflathing  
 
 @IkkyusDen I have deep reservations about Zen transmission. I've seen transmitted teachers who are going through life obviously unintegrated, causing great harm; and teachers who are simply underequipped to deal with student needs.  
 

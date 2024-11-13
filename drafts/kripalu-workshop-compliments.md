@@ -10,7 +10,7 @@ sources: ['1783286921659080724']
 
 (I've been thinking about energy for a while and am keeping this for reference.)
 
-> seflathing  
+> selflathing  
 
 ITT i ruminate on being told "you have a gift" at something unfamiliar yet strangely familiar to me, and wonder about it 🧵  
 

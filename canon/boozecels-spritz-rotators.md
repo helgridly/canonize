@@ -14,7 +14,7 @@ In my mocktail era
 
 They are not "virgin cocktails" they are chad beverages  
 
-`<seflathing>` boozecels vs spritz rotators  
+`<selflathing>` boozecels vs spritz rotators  
 
 i am always somewhat outraged that they're charging $11 for fancy juice though  
 
@@ -22,6 +22,6 @@ i am always somewhat outraged that they're charging $11 for fancy juice though
   
 if they have to have a variety of exotic, perishable ingredients on hand to make me a beautiful mixture of them, or if they have to do something by hand(eg crush herbs or toast spices), then it seems fair  
 
-`<seflathing>` yeah sure. but often it's soda with a dash of bitters and a flower, and i'm incensed  
+`<selflathing>` yeah sure. but often it's soda with a dash of bitters and a flower, and i'm incensed  
 
 at least do the dance with the shaker damnit  
