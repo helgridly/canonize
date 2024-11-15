@@ -125,3 +125,4 @@ If you ever re-download your archive, you can update the tweet .js files in `inp
 - [x] domain
 - [x] render less ugly date in explorer
 - [x] cache bust `contents.json` too
+- [x] tags at the bottom of pages link you to other pages

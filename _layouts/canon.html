@@ -2,6 +2,9 @@
 layout: default
 ---
 
+{% assign cacheBust = site.time | date:'?v=%s' %}
+<script src="{{ site.baseurl }}/js/randomtag.js{{ cacheBust }}"></script>
+
 <article class="page">
 
   {% unless page.hidetitle %}<h1>{{ page.title }}</h1> {% endunless %}
@@ -12,7 +15,7 @@ layout: default
 
   <div class="sourcing">
     <hr>
-    <i>tags:</i> {% for tag in page.tags %}{{tag}}{% unless forloop.last %}, {% endunless %}{% endfor %}<br/>
+    <i>tags:</i> {% for tag in page.tags %}<a href="#" class="randomTag" data-tag="{{ tag }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %} (click tags for another random page with that tag!)<br/>
     <i>posted:</i>
     {{ page.creation_date | date: "%B %e, %Y %H:%M:%S %Z" }} UTC<br/>
     <i>last updated:</i>
