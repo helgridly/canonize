@@ -10,16 +10,18 @@ sources: ['1820892920016507305', '1787264252396331491']
 
 ## The main idea
 
-It's important to discriminate between _description_ and _instruction_. Interpreting descriptions as instructions can lead you to trying to recreate the end state, rather than execute the process that gets you there.
+It's important to discriminate between _description_ and _instruction_. Interpreting descriptions as instructions can lead you to trying to recreate the end state, rather than execute the process that gets you there:
 
 - Someone describes a state or outcome
 - You think it sounds good and want it for yourself
 - If you take the description as instructions, you try to replicate what it looks like from the outside
 - It doesn't work, because the process for changing your situation is rarely as simple as "appear to already be there"
 
-One does not be in Paris by walking around looking a place to buy croissants, listening out for accordions, expecting to see the Eiffel Tower, etc. To be in Paris, you have to _get to Paris_, which is doing a bunch of things that are _not_ being in Paris: find passport, book flights, go to airport, board plane, etc. Being in Paris is a consequence of that process happening.
+One does not be in Paris by walking around looking a place to buy croissants, listening out for accordions, expecting to see the Eiffel Tower, etc. To be in Paris, you have to _get to Paris_, which is doing a bunch of things that are _not_ being in Paris: find passport, book flights, go to airport, board plane, etc. Being in Paris is a consequence of that process happening, and the description doesn't tell you about the process.
 
-I call this "cargo culting the outcome" because it is akin to standing on the runway waving glowing sticks around in the hope that it will summon an airplane. There is a process to summoning an airplane, and it's not waving the sticks: waving the sticks is a consequence of the plane already having arrived.
+I call it "cargo culting the outcome" because it is akin to standing on the runway waving glowing sticks around in the hope that it will summon an airplane. There is a process to summoning an airplane, and it's not waving the sticks: waving the sticks is a consequence of the plane already having arrived.
+
+Confusing a description for instructions and trying to get there by replicating the end state happens all the time:
 
 > A: Being a morning person is great!
 >
@@ -29,7 +31,7 @@ I call this "cargo culting the outcome" because it is akin to standing on the ru
 >
 > B: _attempts to do this, sleeps through alarm, is cold and angry going outside so early, feels like a failure_
 
-A has described _what it is like to be a morning person_. This is fine, but it is not a set of instructions on how to _become_ a morning person: what everyone missed here is that B is still going to bed at 2am. "Figure out what needs to change in order to sustain going to bed at 9-10pm so you can get enough sleep" is the actual instruction.
+A has described what it is like to be a morning person. This is fine, but it is not a set of instructions on how to _become_ a morning person: what everyone missed here is that B is still going to bed at 2am. "Figure out what needs to change in order to sustain going to bed at 9-10pm so you can get enough sleep" is the actual instruction.
 
 ## Deep dive: the Metta Sutta
 
