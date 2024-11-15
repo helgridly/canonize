@@ -1,4 +1,4 @@
-
+// renders the explorer table
 window.onload = function() {
     cacheBust = document.getElementById("sitetime").content;
     fetch("contents.json?v=" + cacheBust)
@@ -19,6 +19,10 @@ window.onload = function() {
         const table = new Tabulator("#data-table", {
           data: data,
           layout: "fitColumns",
+          pagination:"local",
+          paginationSize:20,
+          paginationSizeSelector:[10, 25, 50, 100],
+          paginationCounter:"rows",
           initialSort: [
             { column: "last_updated", dir: "desc" }],
           columns: [

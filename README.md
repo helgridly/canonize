@@ -98,6 +98,7 @@ If you ever re-download your archive, you can update the tweet .js files in `inp
 
 ## next
 
+- [ ] add "hide shitposts" button
 - [ ] add "random button"
 
 ## later
@@ -126,3 +127,4 @@ If you ever re-download your archive, you can update the tweet .js files in `inp
 - [x] render less ugly date in explorer
 - [x] cache bust `contents.json` too
 - [x] tags at the bottom of pages link you to other pages
+- [x] paginate explorer table
