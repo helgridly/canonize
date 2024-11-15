@@ -1,6 +1,7 @@
 
 window.onload = function() {
-    fetch("contents.json?version=" + Date.now())
+    cacheBust = document.getElementById("sitetime").content;
+    fetch("contents.json?v=" + cacheBust)
       .then(response => response.json())
       .then(data => {
         
