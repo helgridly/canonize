@@ -80,8 +80,10 @@ def generate_draft(conv):
     last_user = None
     for tweet in conv:
         if tweet['username'] != last_user:
-            post += '> ' + tweet['username'] + "  \n\n"
-        post += html.unescape(tweet['text']).replace('\n', '  \n') + "  \n\n"
+            post += '`<' + tweet['username'] + ">` "
+            post += html.unescape(tweet['text']).replace('\n', '  \n') + "  \n\n"
+        else:
+            post += html.unescape(tweet['text']).replace('\n', '  \n') + "  \n\n"
         last_user = tweet['username']
 
     file_contents = templates.canon.format(title=title,
