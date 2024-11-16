@@ -98,6 +98,7 @@ If you ever re-download your archive, you can update the tweet .js files in `inp
 
 ## next
 
+- [x] fix description: SEO description should be "from hussein's canon", title bar and header should be "what am i on about?". create "tagline" and replace it where layouts use site.description
 - [ ] add "hide shitposts" button
 - [ ] add "random button"
 
