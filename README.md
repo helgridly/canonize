@@ -13,7 +13,7 @@ install:
 sudo apt-get install ruby-full build-essential zlib1g-dev
 gem install bundler
 bundle init
-bundle add jekyll
+bundle install
 pip install -r requirements.txt
 ```
 
