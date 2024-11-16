@@ -109,7 +109,24 @@ window.onload = function() {
             table.removeFilter("draft", "=", false)
           } else {
             // add tabulator boolean filter that will only show non-drafts
-            table.setFilter("draft", "=", false)
+            table.addFilter("draft", "=", false)
+          }
+        })
+
+        // and again to hide shitposts
+        const hideShitpostsCheckbox = document.getElementById("hide-shitposts");
+        //set its onchange
+
+        function filterShitposts(data) {
+          // return true if data.tags does not contain "shitpost"
+          return !data.tags.includes("shitpost");
+        }
+
+        hideShitpostsCheckbox.addEventListener("change", function() {
+          if( this.checked ) {
+            table.addFilter(filterShitposts)
+          } else {
+            table.removeFilter(filterShitposts)
           }
         })
 
