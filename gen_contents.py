@@ -5,7 +5,7 @@ import json
 import datetime
 
 def extract_front_matter(markdown_filename, draft=False):
-    with open(os.path.join("drafts" if draft else "canon", markdown_filename), "r") as f:
+    with open(os.path.join("drafts" if draft else "canon", markdown_filename), "r", encoding='utf-8') as f:
         markdown_text = f.read()
     
     # Regular expression to match the front matter block
