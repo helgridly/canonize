@@ -3,7 +3,7 @@
   <head>
     {% assign siteTime = site.time | date:'%s' %}
     <meta id="sitetime" name="sitetime" content="{{siteTime}}" />
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.strapline }}</title>
+    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }}</title>
     {% seo title=false %}
     {% include meta.html %}
 
