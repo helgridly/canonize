@@ -75,3 +75,7 @@ But I do think that there's a path where you make an attempt, see what blocks yo
 It can help a lot to pay attention to whether someone is giving a description or instructions, and not confusing the former for the latter. It is not always true that "appear like the description" is the correct instruction for embodying it, in which case "how did you go from being a person who doesn't do these things to someone who does?" can be a useful question.
 
 And you can help others not fall into this trap by gesturing to the process that got you there, so people are reminded that getting there might be a process.
+
+### List of places this idea comes up
+
+* [Good reply game](good-reply-game) is a description of pleasant online behaviours that is downstream of being a warm, open person.
