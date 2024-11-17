@@ -29,6 +29,7 @@ wild to think how this belief has permeated my life. how many times have i manuf
 
 all evil karma ever created by me since of old: now i atone for it all 🙏  
 
+> selflathing  
 
 i talked to claude and goddamn it, it's the trade again
 
