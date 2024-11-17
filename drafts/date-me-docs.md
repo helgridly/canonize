@@ -8,6 +8,8 @@ tags: ['relationships']
 sources: ['1816580035928891629']
 ---
 
+(I want to write a longer thing extolling the virtues - and drawbacks - of date me docs. The asymmetry is one drawback; another is that it's an artificial escalation of intimacy that can make it harder to build the relationship organically)
+
 `<selflathing>` few thoughts about date me docs, having had some experience:  
   
 - i love the idea because 1) it allows creativity with the form 2) it lets ppl gauge their interest while staying anon  
