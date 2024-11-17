@@ -2,10 +2,10 @@
 layout: canon
 title: the trade
 creation_date: 2024-03-24 20:09:37+00:00
-last_updated: 2024-03-24 20:11:14+00:00
+last_updated: 2024-11-17 02:35:14+00:00
 mentions: []
 tags: ['growth', 'healing']
-sources: ['1771992786583060883', '1771993030645432809']
+sources: ['1771992786583060883', '1771993030645432809', '1857975903323578620']
 ---
 
 (I know I have some other tweets about "the trade" which I'll find in review. Then I'll turn this into an article about it.)
@@ -28,3 +28,8 @@ with Being, relaxation turns into a generative force; love stops being needy and
 wild to think how this belief has permeated my life. how many times have i manufactured "the trade" unnecessarily? how many times have i demanded it of others? countless, i'm sure  
 
 all evil karma ever created by me since of old: now i atone for it all 🙏  
+
+
+i talked to claude and goddamn it, it's the trade again
+
+but a particularly twisted version: instead of "if i accommodate your needs, you have to meet mine", it's "you're not even giving me the information i need to accommodate your needs!"
