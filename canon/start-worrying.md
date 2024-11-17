@@ -8,7 +8,7 @@ tags: ['shitpost', 'riffing']
 sources: ['1820619060586885500']
 ---
 
-`<janneljones>` does anyone know any good entry level ruminations for someone new to worrying?  
+> `<janneljones>` does anyone know any good entry level ruminations for someone new to worrying?  
 
 This is a super personal question that needs careful attention. You wouldn't want to get it wrong.  
   
