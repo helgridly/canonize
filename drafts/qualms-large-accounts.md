@@ -5,7 +5,7 @@ creation_date: 2024-06-23 21:20:06+00:00
 last_updated: 2024-06-23 21:59:10+00:00
 mentions: ['junemarie', 'rutabaga', 'meridians_', 'nowtheo', 'ehipassiko444', 'mettafied', 'sonikudzu', 'smiling_for_fun', 'PiquantParvenu', 'gptbrooke', 'br___ian']
 tags: ['twitter']
-sources: ['1804987822861946983']
+sources: ['1804987822861946983', '1815362396703142105']
 ---
 
 > br___ian  
@@ -58,4 +58,18 @@ some of them are actually good at the thing, it feels resonant, it's not just a 
 
 @br___ian @ehipassiko444 @meridians_ @mettafied @smiling_for_fun @rutabaga @junemarie @sonikudzu also i don't think it's stupid. i think it's a very good question  
 
+---
+Jarsen>          @dpinkshadow Oh yeah. I remember this guy. He was the one who was like “ever since
+                 I got enlightened I am uninterested in the people around me”
+                 1815384481404174700 @dpinkshadow 1815362396703142105
 
+dpinkshadow>     @Jarsen lmao
+                 1815386221612249359 @Jarsen 1815384481404174700
+
+selflathing>     @Jarsen @dpinkshadow this is validating and hilarious, ty for sharing
+                 1815387772540067929 @Jarsen 1815384481404174700
+
+                 @dpinkshadow i didn't get myself blocked but i did unfollow him some time ago. a
+                 common type of guy around here and not one i'm interested in engaging with
+
+                 i doubt you will find this a huge loss
