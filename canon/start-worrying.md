@@ -4,7 +4,7 @@ title: how to start worrying
 creation_date: 2024-08-06 00:33:04+00:00
 last_updated: 2024-08-06 00:57:47+00:00
 mentions: ['janneljones']
-tags: ['shitpost']
+tags: ['shitpost', 'riffing']
 sources: ['1820619060586885500']
 ---
 
