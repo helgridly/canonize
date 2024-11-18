@@ -60,7 +60,7 @@ Everyone else has flown out early, but you had work to finish the semester.
   
 You start packing the afternoon before. There is no suitcase in the closet, but you find a door. Maybe it's in here? But it's locked.  
   
-"FUCK! fuck fuck fuck fuck fuck." You smile at the image of Hattie, your long-departed governess, were she to hear your language.
+"FUCK! fuck fuck fuck fuck fuck." You smile at the thought of Hattie, your long-departed governess, were she to hear your language.
   
 "Sorry Hattie", you mutter to yourself as you shoulder barge the door open.  
 
