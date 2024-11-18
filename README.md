@@ -102,7 +102,7 @@ If you ever re-download your archive, you can update the tweet .js files in `inp
 
 ## later
 
-
+- [ ] add subscribe to feed feature, see [here](https://medium.com/@davideiaiunese/the-problem-why-a-newsletter-baae4409a526) -- needs to come after i've done the first review pass otherwise people will be spammed
 
 ## done
 

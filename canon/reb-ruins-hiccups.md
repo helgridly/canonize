@@ -4,7 +4,7 @@ title: reb ruins hiccups
 creation_date: 2024-06-22 01:36:53+00:00
 last_updated: 2024-06-25 12:28:11+00:00
 mentions: ['soundrotator', 'Sassafrassalass']
-tags: ['shitpost', 'riffing']
+tags: ['shitpost', 'riffing', 'creative']
 sources: ['1804327668541743470']
 ---
 
