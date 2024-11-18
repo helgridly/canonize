@@ -4,7 +4,7 @@ title: pali diss track
 creation_date: 2024-06-21 21:52:55+00:00
 last_updated: 2024-06-21 22:15:30+00:00
 mentions: ['way_opener', 'hormeze', 'rotundrutabaga']
-tags: ['shitpost', 'buddhism']
+tags: ['shitpost', 'buddhism', 'creative']
 sources: ['1804271306277367820']
 ---
 
