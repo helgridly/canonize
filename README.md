@@ -99,6 +99,7 @@ If you ever re-download your archive, you can update the tweet .js files in `inp
 
 ## next
 
+- [ ] bugfix re deleted accounts 
 - [ ] automatically create scratch directory if not exists
 - [ ] add "random button"
 
