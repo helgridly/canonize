@@ -2,7 +2,7 @@
 layout: canon
 title: on the virtues of grape descending
 creation_date: 2024-06-04 20:18:54+00:00
-last_updated: 2024-08-30 16:48:25+00:00
+last_updated: 2024-06-04 21:55:25+00:00
 mentions: ['Sassafrassalass', 'soundrotator']
 tags: ['shitpost']
 sources: ['1798087051184832838']
