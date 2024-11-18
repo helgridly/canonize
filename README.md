@@ -35,6 +35,7 @@ If you prefer a devcontainer or GitHub codespaces, that works too. For some reas
 - Delete everything in the `drafts/` and `canon/` folders 
 - Request and download your Twitter archive
 - Unzip `tweets.js` and `deleted-tweets.js`into a subdirectory of this repo called `input/`
+- Make an empty directory called `scratch/`
 - Open Twitter in your browser, open Dev Tools, and find the `auth_token` and `ct0` values from a `Cookie:` header
 - Create a file in the root of this repository called `secrets.py` with the following contents, and fill them in:
 
@@ -98,6 +99,7 @@ If you ever re-download your archive, you can update the tweet .js files in `inp
 
 ## next
 
+- [ ] automatically create scratch directory if not exists
 - [ ] add "random button"
 
 ## later
