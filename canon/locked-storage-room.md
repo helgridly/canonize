@@ -72,7 +72,7 @@ It is very dusty in here.
 
 You step in. Drapes languidly parted, dust in the sunbeam. This room clearly hasn't changed since...  
   
-You look around, trying to date it. The only place you've seen this wallpaper is the inside of your parents' closet, untouched in their bedroom remodel ("who cares?", said your mother).
+You look around, trying to date it. The only place you've seen this wallpaper is the inside of your parents' closet, untouched in their bedroom remodel ("Who cares?", said your mother).
   
 But they've been in that bedroom forever. You've never known them not there, so... before you were born?  
 
