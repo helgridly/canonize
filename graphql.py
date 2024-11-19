@@ -164,7 +164,9 @@ def parse_one_tweet(tweets, entry, is_module=False):
         # no! bad twitter! don't inject things not in the conversation into the conversation!!!!!
         pass
     
-    elif itemContent['itemType'] == "TimelineTweet" and itemContent['tweet_results']: # sometimes tweet_results is empty(!!!)
+    # if someone deletes their account entirely, TweetDetail will return empty tweet_results for deleted tweets
+    # it will also remove the parent tweet details from replies to it, which we fix up in fetch_tweet_context
+    elif itemContent['itemType'] == "TimelineTweet" and itemContent['tweet_results']:
 
         # deleted tweet or locked account
         if itemContent['tweet_results']['result']['__typename'] == "TweetTombstone":
@@ -224,6 +226,7 @@ def fetch_tweet_context(tweet_id, context_pile, tweet_pile):
     conversation_tweets_ids = []
     cursor = None
     known_parent_tweet = None
+    orphaned_child_tweet = None
 
     while True:
         tweets, cursors = fetch_tweet_detail(tweet_id, cursor)
@@ -231,6 +234,13 @@ def fetch_tweet_context(tweet_id, context_pile, tweet_pile):
         # go in reverse order
         for tweet in tweets[::-1]:
             print(tweet['status_id'], tweet['text'][:50])
+
+            # if there's an orphan, fix it up to point to us
+            if orphaned_child_tweet:
+                orphaned_child_tweet['parent_status_id'] = tweet['status_id']
+                orphaned_child_tweet['parent_username'] = tweet['username']
+                orphaned_child_tweet['parent_user_id'] = tweet['user_id']
+                orphaned_child_tweet = None
 
             if tweet['status_id'] in context_pile or tweet['status_id'] in tweet_pile:
 
@@ -253,9 +263,14 @@ def fetch_tweet_context(tweet_id, context_pile, tweet_pile):
 
                     break
             
-            if tweet['status_id'] == "1761502917972938761":
-                #import pdb; pdb.set_trace()
-                pass
+            # if someone deletes their account, twitter removes not just their posts but also the parent pointers
+            # from all replies to their tweets
+            # this means that if you've replied to a person who deleted their account, you lose your parent pointer
+            # and thus your connection to the thread
+            # here we repair the tweet by marking it as an orphan, whereupon it will get reparented to the next
+            # tweet we see in the thread (going upwards)
+            if not tweet.get('parent_status_id', None):
+                orphaned_child_tweet = tweet
 
             if tweet['user_id'] != conf.USER_ID:
                 # if we've scanned ahead of focusedTweetId then we might find one of our own tweets,
@@ -283,11 +298,11 @@ def fetch_tweet_context(tweet_id, context_pile, tweet_pile):
 
 if __name__ == "__main__":
     # testing
-    import pdb; pdb.set_trace()    
-    tweets, cursors = fetch_tweet_detail("1850260126638489707")
+    #tweets, cursors = fetch_tweet_detail("1850260126638489707")
+    #import pdb; pdb.set_trace()
     context_pile = {}
     tweet_pile = {}
-    conv_id, conv_tweet_ids = fetch_tweet_context("1850670820894421069", context_pile, tweet_pile)
+    conv_id, conv_tweet_ids = fetch_tweet_context("1770047976964035067", context_pile, tweet_pile)
 
     import pdb; pdb.set_trace()
     pass
