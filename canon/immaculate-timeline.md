@@ -3,7 +3,7 @@ layout: canon
 title: how to have an immaculate timeline
 creation_date: 2024-08-29 13:25:46+00:00
 last_updated: 2024-10-26 17:25:51+00:00
-mentions: []
+mentions: ['calistan_']
 tags: ['twitter', 'living well']
 sources: ['1829148438019338604']
 ---
@@ -24,7 +24,7 @@ You can mute all RTs by blocking "RT @".
 
 ### never read "For You"
   
-I want the thoughts of people I follow, not engagement bait slop Discourse™. The browser extension I use (more below) to tidy the UI literally flips me back to following if i hit For You. I occasionally read it on my phone for a visceral reminder of how bad it is.
+I want the thoughts of people I follow, not engagement bait slop Discourse™. The browser extension I use (more below) to tidy the UI literally flips me back to following if I hit For You. I occasionally read it on my phone for a visceral reminder of how bad it is.
 
 ### unfollow if they make you feel bad
   
@@ -34,7 +34,7 @@ You can also mute accounts that you don't follow. This can be useful if they gen
 
 ### one thing i haven't figured out
   
-Sometimes people I like go on a tear (or are just high-volume posters). I wish there was a "one person can only be max N% of displayed tweets" setting, because i feel overwhelmed when someone starts dominating my feed. Absent that i have to... mute and hope I remember to unmute? Which I never do.
+Sometimes people I like go on a tear (or are just high-volume posters). I wish there was a "one person can only be max N% of displayed tweets" setting, because I feel overwhelmed when someone starts dominating my feed. Absent that I have to... mute and hope I remember to unmute? Which I never do.
 
 ### mute words temporarily  
   

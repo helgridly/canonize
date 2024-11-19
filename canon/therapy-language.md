@@ -12,7 +12,7 @@ There's sometimes talk about "therapy language", usually in scare quotes. Some a
 
 I think the name is misattributed. No therapist I've ever had speaks like that.
   
-If you're struggling and find something that provides insight (+relief), i think there's a real danger of taking it on uncritically and running with it because it "feels true". "Here's a script to follow that avoids vulnerability and provides you a sense of safety" is compelling.
+If you're struggling and find something that provides insight (+relief), I think there's a real danger of taking it on uncritically and running with it because it "feels true". "Here's a script to follow that avoids vulnerability and provides you a sense of safety" is compelling.
 
 And it only takes one influencer misinterpreting a book, self-diagnosing etc to inject unskilled or inaccurate uses of the language into the zeitgeist. One example is the phrase "trauma bonding", which in the profession refers to the bond between _a trauma victim and their abuser_, but in the last few years is being used online to mean "bonding with another person over both having experienced trauma".
 
