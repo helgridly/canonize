@@ -1,5 +1,9 @@
 import pickle
+import os
 
+# create directory called scratch/ if not exists
+if not os.path.exists("scratch"):
+    os.makedirs("scratch")
 
 def save_reviewed(reviewed):
     with open("scratch/reviewed.pkl", "wb") as f:

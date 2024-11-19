@@ -99,8 +99,6 @@ If you ever re-download your archive, you can update the tweet .js files in `inp
 
 ## next
 
-- [ ] bugfix re deleted accounts 
-- [ ] automatically create scratch directory if not exists
 - [ ] add "random button"
 
 ## later
@@ -133,3 +131,5 @@ If you ever re-download your archive, you can update the tweet .js files in `inp
 - [x] fix description: SEO description should be "from hussein's canon", title bar and header should be "what am i on about?". create "tagline" and replace it where layouts use site.description
 - [x] add "hide shitposts" button
 - [x] make gen_contents.py a github action instead
+- [x] bugfix re deleted accounts 
+- [x] automatically create scratch directory if not exists
