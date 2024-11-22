@@ -2,10 +2,10 @@
 layout: canon
 title: qualms about large accounts
 creation_date: 2024-06-23 21:20:06+00:00
-last_updated: 2024-06-23 21:59:10+00:00
+last_updated: 2024-11-22 23:35:10+00:00
 mentions: ['junemarie', 'rutabaga', 'meridians_', 'nowtheo', 'ehipassiko444', 'mettafied', 'sonikudzu', 'smiling_for_fun', 'PiquantParvenu', 'gptbrooke', 'br___ian']
 tags: ['twitter']
-sources: ['1804987822861946983', '1815362396703142105']
+sources: ['1804987822861946983', '1815362396703142105', '1860102230692765998', '1860104880729522271']
 ---
 
 > br___ian  
@@ -73,3 +73,19 @@ selflathing>     @Jarsen @dpinkshadow this is validating and hilarious, ty for s
                  common type of guy around here and not one i'm interested in engaging with
 
                  i doubt you will find this a huge loss
+
+---
+
+`<selflathing>` me to claude: i think people should stop making general claims about how the world is or should be, and instead only talk about their personal experience.
+
+claude: you realize that's a general claim about how the world should be, right?
+
+owned. destroyed by my own facts and logic
+
+in any case the words i was looking for were "epistemic humility" and "perspectivism", so that's cool
+
+---
+
+`<selflathing>` the nice thing about only sharing your perspective and lived experience is that nobody gives a shit, which prevents you from turning into a little goblin hooked on creating engagement bait for the algorithm
+
+instead you and your *check* 271 followers can just be nice chill people
