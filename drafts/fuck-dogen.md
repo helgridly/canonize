@@ -4,7 +4,7 @@ title: dogen can go to hell
 creation_date: 2024-08-07 21:28:00+00:00
 last_updated: 2024-08-08 01:42:09+00:00
 mentions: ['TPatbat', 'danielbrottman', 'drakosophos', 'perpetuummobula', 'HellenicVibes', 'tpatbat', 'SenseiMilli', 'jbfly46', 'forthrighter', 'durdfarm']
-tags: ['zen', 'buddhism']
+tags: ['zen', 'buddhism', 'pontificating']
 sources: ['1821297264054419632']
 ---
 

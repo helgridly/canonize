@@ -4,7 +4,7 @@ title: cargo culting outcomes
 creation_date: 2024-08-06 17:41:53+00:00
 last_updated: 2024-11-15 14:21:57+00:00
 mentions: ['polyascension']
-tags: ['living well', 'growth']
+tags: ['living well', 'growth', 'pontificating']
 sources: ['1820892920016507305', '1787264252396331491']
 ---
 

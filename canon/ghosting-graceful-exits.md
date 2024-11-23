@@ -4,7 +4,7 @@ title: ghosting and the "graceful exit"
 creation_date: 2024-07-29 12:33:54+00:00
 last_updated: 2024-07-29 12:44:49+00:00
 mentions: ['danielbrottman', '_silentjacob_', 'chercher_ai']
-tags: ['relationships']
+tags: ['relationships', 'pontificating']
 sources: ['1817901364753637618', '1822236602644496491']
 ---
 

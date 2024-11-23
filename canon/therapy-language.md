@@ -4,7 +4,7 @@ title: "therapy language"
 creation_date: 2024-08-23 12:02:05+00:00
 last_updated: 2024-08-23 12:23:07+00:00
 mentions: ['pythonandpanda']
-tags: ['growth', 'healing']
+tags: ['growth', 'healing', 'pontificating']
 sources: ['1826953052022055103']
 ---
 
