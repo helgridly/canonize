@@ -3,7 +3,7 @@ layout: canon
 title: on date me docs
 creation_date: 2024-07-25 21:03:25+00:00
 last_updated: 2024-07-25 21:12:05+00:00
-mentions: []
+mentions: ['spockinabeanie']
 tags: ['relationships', 'pontificating']
 sources: ['1816580035928891629']
 ---
@@ -24,4 +24,10 @@ overall i really like it. feels like the old days of OKCupid when people would w
 
 i suspect given my plans to move next year, it's unlikely anything will come of it. i ought to get in with the london tpot crowd but afaict the london scene is less vocal in general and i think might also skew younger  
 
+---
 
+chat w/ spockinabeanie about whether i should add my working with me doc to my dateme profile:
+
+but this sorta links up with one of my icks about dateme docs, which is that they deny the opportunity to build intimacy by discovering things about each other. dropping a "how to get the best out of me" manual on someone mechanizes the interactions. not to mention is a big ask to read it
+
+working with me docs help in work relationships because largely you don't choose who you work with. part of being a professional is doing some work to smooth over the relationship, make it unremarkable and pleasant. but imo for romantic relationships, natural compatibility matters. i don't want my partner to know my foibles and be skilled at working around them, i want my partner to know my foibles, think they're cute, and laugh at me
