@@ -101,10 +101,18 @@ def pile_to_conversations(pile):
         elif tweet['parent_user_id'] != conf.USER_ID:
             if tweet['parent_status_id'] not in context_pile:
                 # we don't know of this tweet and will have to fetch it
-                # fetch_tweet_context updates the context_pile with the parent tweet and all the ones above it
+                # fetch_tweet_context updates the context_pile with all the tweets aboe the one we pass
                 # returns a conversation id and a list of tweets to add to the conversation
-                print("looking for parent tweet", tweet['parent_status_id'], "for tweet", tweet['status_id'])
-                conv_id, conv_tweet_ids = graphql.fetch_tweet_context(tweet['parent_status_id'], context_pile, pile)
+                print("looking for context for tweet", tweet['status_id'])
+                conv_id, conv_tweet_ids, reparented_tweets = graphql.fetch_tweet_context(tweet['status_id'], context_pile, pile)
+
+                # sometimes a user's tweets.js will contain a tweet with a parent id that doesn't exist because its account has been deleted
+                # fetch_tweet_context repairs these tweets; fold them in to the tweet pile
+                for reparented_id in reparented_tweets:
+                    if reparented_id in pile:
+                        pile[reparented_id]['parent_status_id'] = reparented_tweets[reparented_id]['parent_status_id']
+                        pile[reparented_id]['parent_user_id'] = reparented_tweets[reparented_id]['parent_user_id']
+                        pile[reparented_id]['parent_username'] = reparented_tweets[reparented_id]['parent_username']
                 
                 # found a new conversation
                 if conv_id not in conversations:

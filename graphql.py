@@ -227,6 +227,7 @@ def fetch_tweet_context(tweet_id, context_pile, tweet_pile):
     cursor = None
     known_parent_tweet = None
     orphaned_child_tweet = None
+    reparented_tweets = {}
 
     while True:
         tweets, cursors = fetch_tweet_detail(tweet_id, cursor)
@@ -240,6 +241,7 @@ def fetch_tweet_context(tweet_id, context_pile, tweet_pile):
                 orphaned_child_tweet['parent_status_id'] = tweet['status_id']
                 orphaned_child_tweet['parent_username'] = tweet['username']
                 orphaned_child_tweet['parent_user_id'] = tweet['user_id']
+                reparented_tweets.update({orphaned_child_tweet['status_id'] : orphaned_child_tweet})
                 orphaned_child_tweet = None
 
             if tweet['status_id'] in context_pile or tweet['status_id'] in tweet_pile:
@@ -289,10 +291,10 @@ def fetch_tweet_context(tweet_id, context_pile, tweet_pile):
                 known_parent_tweet = tweets[0]
                 known_parent_tweet['conversation_id'] = known_parent_tweet['status_id']
 
-        return known_parent_tweet['conversation_id'], conversation_tweets_ids
+        return known_parent_tweet['conversation_id'], conversation_tweets_ids, reparented_tweets
     
     assert False, "shouldn't get here"
-    return (conversation_id, conversation_tweets_ids)
+    return (conversation_id, conversation_tweets_ids, reparented_tweets)
 
 
 
@@ -302,7 +304,13 @@ if __name__ == "__main__":
     #import pdb; pdb.set_trace()
     context_pile = {}
     tweet_pile = {}
-    conv_id, conv_tweet_ids = fetch_tweet_context("1770047976964035067", context_pile, tweet_pile)
+
+    # swamp tweet
+    #conv_id, conv_tweet_ids, reparented_tweets = fetch_tweet_context("1770047976964035067", context_pile, tweet_pile)
+    
+    # swamp missing parent tweet
+    conv_id, conv_tweet_ids, reparented_tweets = fetch_tweet_context("1770005922217132422", context_pile, tweet_pile)
+    
 
     import pdb; pdb.set_trace()
     pass
