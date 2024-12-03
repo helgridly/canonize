@@ -4,7 +4,7 @@ title: notes on Unlocking the Emotional Brain
 creation_date: 2024-12-03 00:35:47+00:00
 last_updated: 2024-12-03 00:35:47+00:00
 mentions: ['baoteching']
-tags: ['notes']
+tags: ['notes', 'healing']
 sources: ['1863743830484226389']
 ---
 
