@@ -5,7 +5,7 @@ creation_date: 2024-12-02 11:08:47+00:00
 last_updated: 2024-12-02 12:05:35+00:00
 mentions: ['baoteching']
 tags: ['notes']
-sources: []
+sources: ['1863743830484226389']
 ---
 
 _Unlocking the Emotional Brain_ is a book about memory reconsolidation and its use in therapy.
@@ -44,7 +44,7 @@ It's possible that the same behaviour may have multiple underlying problems, in 
 
 As I said up top, the book says that you can do memory reconsolidation inside many therapeutic frameworks. In particular there are many other ways than symptom deprivation to do the "discovery" step (step 2); and many ways of generating the disconfirmation - Gendlin enjoyers will have noticed the "felt shift", for instance.
 
-The book then starts talking about psychotherapy more broadly, picking a fight with attachment theory in particular and then getting specific in talking about how other. I put the book down at this point, having got what I wanted out of it.
+The book then starts talking about psychotherapy more broadly, picking a fight with attachment theory in particular and then getting specific in talking about how other therapies can implement memory reconsolidation. I put the book down at this point, having got what I wanted out of it.
 
 One gripe I had with the book was that it keeps using the phrase "locked synapses". It initially introduces this phrase by saying "\[emotional\] learnings formed in the presence of intense emotion ... are locked into the brain by extraordinarily durable synapses, and it seemed as though the brain threw away the key", and the idea is then used repeatedly, with absolutely no description of what it means for a synapse to be "locked". I eventually concluded it was a metaphor, but it tripped me up every time.
 
