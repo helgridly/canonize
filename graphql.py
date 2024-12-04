@@ -5,6 +5,7 @@ import urllib.parse
 import tweetparse
 import time
 import conf
+import scratch
 
 # trash we have to pass to twitter otherwise it gets mad
 default_features = {
@@ -101,13 +102,43 @@ def get_params(focalTweetId, cursor=None):
 
     return {"variables": vars_str, "features": feats_str} #urllib.parse.quote(vars_str)}
 
-
 #variables=%7B%22focalTweetId%22%3A%221850670820894421069%22%2C%22cursor%22%3A%22DwAAAPAAHCaEgLn98s7crjM1AgAA%22%2C%22referrer%22%3A%22tweet%22%2C%22with_rux_injections%22%3Afalse%2C%22rankingMode%22%3A%22Relevance%22%2C%22includePromotedContent%22%3Afalse%2C%22withCommunity%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withBirdwatchNotes%22%3Atrue%2C%22withVoice%22%3Atrue%7D
 #https://x.com/i/api/graphql/nBS-WpgA6ZG0CyNHD517JQ/TweetDetail?variables=%7B%22focalTweetId%22%3A%221850670820894421069%22%2C%22with_rux_injections%22%3Afalse%2C%22rankingMode%22%3A%22Relevance%22%2C%22includePromotedContent%22%3Afalse%2C%22withCommunity%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withBirdwatchNotes%22%3Atrue%2C%22withVoice%22%3Atrue%7D&features=%7B%22rweb_tipjar_consumption_enabled%22%3Atrue%2C%22responsive_web_graphql_exclude_directive_enabled%22%3Atrue%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22communities_web_enable_tweet_community_results_fetch%22%3Atrue%2C%22c9s_tweet_anatomy_moderator_badge_enabled%22%3Atrue%2C%22articles_preview_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22tweet_awards_web_tipping_enabled%22%3Afalse%2C%22creator_subscriptions_quote_tweet_preview_enabled%22%3Afalse%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22rweb_video_timestamps_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Atrue%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D&fieldToggles=%7B%22withArticleRichContentState%22%3Atrue%2C%22withArticlePlainText%22%3Afalse%2C%22withGrokAnalyze%22%3Afalse%2C%22withDisallowedReplyControls%22%3Afalse%7D
 
+def fetch_username(user_id):
+    usernames = scratch.load_usernames()
+    if user_id in usernames:
+        return usernames[user_id]
+    
+    ratelimit_wait()
+    print("fetching username for", user_id)
+    resp = requests.get(f"https://x.com/i/api/graphql/JnwU1UO8J1tWlOJktPZIzg/UsersByRestIds?variables=%7B%22userIds%22%3A%5B%22{user_id}%22%5D%7D&features=%7B%22profile_label_improvements_pcf_label_in_post_enabled%22%3Afalse%2C%22rweb_tipjar_consumption_enabled%22%3Atrue%2C%22responsive_web_graphql_exclude_directive_enabled%22%3Atrue%2C%22verified_phone_label_enabled%22%3Afalse%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%7D")
+    result = resp.json()
+    username = result['data']['users'][0]['result']['legacy']['screen_name']
+
+    usernames[user_id] = username
+    scratch.save_usernames(usernames)
+
+    return username
+
 
 def raw_tweet_to_parsed(tweet_result):
-    return tweetparse.parse_one_tweet(tweet_result['legacy'], tweet_result['core']['user_results']['result'])
+    if 'result' not in tweet_result['core']['user_results']:
+        # twitter has randomly decided to not give us user data. why? who the fuck knows. go fetch it, sigh
+        user_id = tweet_result['legacy']['user_id_str']
+        screen_name = fetch_username(user_id)
+
+        # dummy a user data
+        user_data = {
+            "rest_id": user_id,
+            "legacy": {
+                "screen_name": screen_name
+            }
+        }
+    else:
+        user_data = tweet_result['core']['user_results']['result']
+
+    return tweetparse.parse_one_tweet(tweet_result['legacy'], user_data)
 
 def deleted_tweet_to_parsed(str_id):
     return dead_tweet_to_parsed(str_id, True, None)
@@ -249,6 +280,7 @@ def fetch_tweet_context(tweet_id, context_pile, tweet_pile):
     cursor = None
     known_parent_tweet = None
     orphaned_child_tweet = None
+    previous_tweet = None
     reparented_tweets = {}
 
     while True:
@@ -264,7 +296,15 @@ def fetch_tweet_context(tweet_id, context_pile, tweet_pile):
                 orphaned_child_tweet['parent_username'] = tweet['username']
                 orphaned_child_tweet['parent_user_id'] = tweet['user_id']
                 reparented_tweets.update({orphaned_child_tweet['status_id'] : orphaned_child_tweet})
+                previous_tweet = orphaned_child_tweet
                 orphaned_child_tweet = None
+
+            if previous_tweet and previous_tweet['parent_status_id'] != tweet['status_id']:
+                # we're scanning bottom to top, so usually up the tweet chain
+                # i'm not sure whether this is possible, but maybe a tweet's parent points to one
+                # that is missing without it being orphaned, in which case the pointer will dangle nowhere
+                # in that case, we'll set ourselves as a backup parent
+                previous_tweet['backup_parent_id'] = tweet['status_id']
 
             if tweet['status_id'] in context_pile or tweet['status_id'] in tweet_pile:
 
@@ -282,6 +322,7 @@ def fetch_tweet_context(tweet_id, context_pile, tweet_pile):
                     try:
                         assert known_parent_tweet and known_parent_tweet.get('conversation_id')
                     except AssertionError as e:
+                        print("could not find parent or conversation id for tweet", tweet['status_id'])
                         import pdb; pdb.set_trace()
                         pass
 
@@ -311,7 +352,26 @@ def fetch_tweet_context(tweet_id, context_pile, tweet_pile):
             else:
                 # if we hit the top and don't have a cursor, then the first tweet is the new conversation id
                 known_parent_tweet = tweets[0]
+                if known_parent_tweet['parent_status_id']:
+                    # we hit the top of the page; guess there was an invisible deleted tweeet above us, but
+                    # there isn't any more
+                    known_parent_tweet['parent_status_id'] = None
+                    known_parent_tweet['parent_username'] = None
+                    known_parent_tweet['parent_user_id'] = None
                 known_parent_tweet['conversation_id'] = known_parent_tweet['status_id']
+
+        # reparent any tweets to backups if necessary
+        for cti in conversation_tweets_ids:
+            ctweet = tweet_pile.get(cti) or context_pile.get(cti)
+            ctweet_parent_id = ctweet.get('parent_status_id', None)
+            ctweet_backup_parent_id = ctweet.get('backup_parent_id', None)
+            if ctweet_backup_parent_id and ctweet_parent_id not in context_pile and ctweet_parent_id not in tweet_pile:
+                ctweet_parent = tweet_pile.get(ctweet_backup_parent_id) or context_pile.get(ctweet_backup_parent_id)
+
+                print("reparenting dangling parent ref of tweet", ctweet['status_id'], "from", ctweet_parent_id, "to backup", ctweet_backup_parent_id)
+                ctweet['parent_status_id'] = ctweet_parent['status_id']
+                ctweet['parent_username'] = ctweet_parent['username']
+                ctweet['parent_user_id'] = ctweet_parent['user_id']
 
         return known_parent_tweet['conversation_id'], conversation_tweets_ids, reparented_tweets
     

@@ -7,6 +7,7 @@ import graphql
 import sys
 import pdb
 import copy
+import traceback
 
 def tweets_from_js(fname, js_prefix):
     """parse tweets.js into a list of tweets, sorted by status_id asc"""
@@ -66,6 +67,33 @@ def find_earliest_user_tweet(conv):
             return tweet['date']
     return None
 
+
+def fetch_tweet_context(tweet, context_pile, pile, conversations):
+    # we don't know of this tweet and will have to fetch it
+    # fetch_tweet_context updates the context_pile with all the tweets above the one we pass
+    # returns a conversation id and a list of tweets to add to the conversation
+    print("looking for context for tweet", tweet['status_id'])
+    conv_id, conv_tweet_ids, reparented_tweets = graphql.fetch_tweet_context(tweet['status_id'], context_pile, pile)
+
+    # sometimes a user's tweets.js will contain a tweet with a parent id that doesn't exist because its account has been deleted
+    # fetch_tweet_context repairs these tweets; fold them in to the tweet pile
+    for reparented_id in reparented_tweets:
+        if reparented_id in pile:
+            pile[reparented_id]['parent_status_id'] = reparented_tweets[reparented_id]['parent_status_id']
+            pile[reparented_id]['parent_user_id'] = reparented_tweets[reparented_id]['parent_user_id']
+            pile[reparented_id]['parent_username'] = reparented_tweets[reparented_id]['parent_username']
+    
+    # found a new conversation
+    if conv_id not in conversations:
+        conversations[conv_id] = []
+
+    # add the tweet and everything above it to the conversation
+    for t_id in conv_tweet_ids:
+        context_pile[t_id]['conversation_id'] = conv_id
+        conversations[conv_id].append(context_pile[t_id])
+
+    return conv_id, conv_tweet_ids, reparented_tweets
+
 def pile_to_conversations(pile):
     """we have a pile of tweets that we want to turn into threads
     they come in status_id order, from oldest to newest. so we'll always see a parent tweet before its child
@@ -86,52 +114,49 @@ def pile_to_conversations(pile):
     for conv_id in conversations:
         for tweet in conversations[conv_id]:
             if tweet['user_id'] == conf.USER_ID:
+                # twitter deletes deleted tweets after 14 days, so after that your deleted-tweets.js might not have them
+                # thus you can end up in a funny situation where if you import your archive a second time, your existing log
+                # of prior conversations might contain tweets that are not in deleted-tweets.js of the new archive
+                # so here we take the opportunity to populate the pile with missing tweets we happen to have access to
+                if tweet['status_id'] not in pile:
+                    pile[tweet['status_id']] = tweet
+
                 pile[tweet['status_id']]['conversation_id'] = conv_id
 
     for tweet_id in pile.keys()[pile_index:]:
         tweet = pile[tweet_id]
+        
+        if tweet['parent_status_id']:
+            # i'm a reply to a tweet, also by the user
+            if tweet['parent_user_id'] == conf.USER_ID:
+                if tweet['parent_status_id'] in pile:
+                    parent = pile[tweet['parent_status_id']]
 
-        # if i'm a top level tweet, i'm the beginning of a new conversation
+                    # it should be here either because:
+                    # 1. it's already been processed
+                    # 2. it was processed in some prior run of tweetpile and got dumped back into pile from the conversations list
+                    assert 'conversation_id' in parent
+                else:
+                    # the parent has probably been deleted, and isn't in the pile because it's older than the 14 day cutoff for
+                    # deleted-tweets.js
+                    # we might however be able to find a tombstone for it, or reparent it
+                    fetch_tweet_context(tweet, context_pile, pile, conversations)
+
+            # if i have a parent, but it's not the user, it won't be in the twitter export
+            else: # tweet['parent_user_id'] != conf.USER_ID
+                if tweet['parent_status_id'] not in context_pile:
+                    fetch_tweet_context(tweet, context_pile, pile, conversations)
+
+        # this is NOT an else case for the previous if; it's possible that fetching context
+        # de-parented this tweet if it was pointing to something that didn't exist and is now
+        # the top of the thread
         if not tweet['parent_status_id']:
             conversations[tweet_id] = [tweet]
             pile[tweet_id]['conversation_id'] = tweet_id
-            continue
-
-        # if i have a parent, but it's not the user, it won't be in the twitter export
-        elif tweet['parent_user_id'] != conf.USER_ID:
-            if tweet['parent_status_id'] not in context_pile:
-                # we don't know of this tweet and will have to fetch it
-                # fetch_tweet_context updates the context_pile with all the tweets aboe the one we pass
-                # returns a conversation id and a list of tweets to add to the conversation
-                print("looking for context for tweet", tweet['status_id'])
-                conv_id, conv_tweet_ids, reparented_tweets = graphql.fetch_tweet_context(tweet['status_id'], context_pile, pile)
-
-                # sometimes a user's tweets.js will contain a tweet with a parent id that doesn't exist because its account has been deleted
-                # fetch_tweet_context repairs these tweets; fold them in to the tweet pile
-                for reparented_id in reparented_tweets:
-                    if reparented_id in pile:
-                        pile[reparented_id]['parent_status_id'] = reparented_tweets[reparented_id]['parent_status_id']
-                        pile[reparented_id]['parent_user_id'] = reparented_tweets[reparented_id]['parent_user_id']
-                        pile[reparented_id]['parent_username'] = reparented_tweets[reparented_id]['parent_username']
-                
-                # found a new conversation
-                if conv_id not in conversations:
-                    conversations[conv_id] = []
-
-                # add the parent and everything above it to the conversation
-                for t_id in conv_tweet_ids:
-                    context_pile[t_id]['conversation_id'] = conv_id
-                    conversations[conv_id].append(context_pile[t_id])
-            
-            # now the parent is definitely in the context pile
-            parent = context_pile[tweet['parent_status_id']]
-
-        # i'm a reply to a user's tweet
         else:
-            parent = pile[tweet['parent_status_id']]
-
-        tweet['conversation_id'] = parent['conversation_id']
-        conversations[tweet['conversation_id']].append(tweet)
+            parent = context_pile.get(tweet['parent_status_id'], None) or pile.get(tweet['parent_status_id'], None)
+            tweet['conversation_id'] = parent['conversation_id']
+            conversations[tweet['conversation_id']].append(tweet)
 
         scratch.save_conversations(conversations)
         scratch.save_context_pile(context_pile)
@@ -144,8 +169,9 @@ def pile_to_conversations(pile):
     return sorted_convs
 
 
-def excepthook(type, value, traceback):
-    pdb.post_mortem(traceback)
+def excepthook(type, value, tb):
+    traceback.print_exception(type, value, tb)
+    pdb.post_mortem(tb)
 
 if __name__ == "__main__":
     sys.excepthook = excepthook

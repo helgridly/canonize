@@ -5,6 +5,18 @@ import os
 if not os.path.exists("scratch"):
     os.makedirs("scratch")
 
+def save_usernames(usernames):
+    with open("scratch/usernames.pkl", "wb") as f:
+        pickle.dump(usernames, f)
+
+def load_usernames():
+    # if we have a usernames.pkl file, load it
+    try:
+        with open("scratch/usernames.pkl", "rb") as f:
+            return pickle.load(f)
+    except FileNotFoundError:
+        return {}
+
 def save_reviewed(reviewed):
     with open("scratch/reviewed.pkl", "wb") as f:
         pickle.dump(reviewed, f)
