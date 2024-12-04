@@ -102,8 +102,8 @@ def get_params(focalTweetId, cursor=None):
     return {"variables": vars_str, "features": feats_str} #urllib.parse.quote(vars_str)}
 
 
-#variables=%7B%22focalTweetId%22%3A%221850670820894421069%22%2C%22cursor%22%3A%22DwAAAPAAHCaEgLn98s7crjM1AgAA%22%2C%22referrer%22%3A%22tweet%22%2C%22with_rux_injections%22%3Afalse%2C%22rankingMode%22%3A%22Relevance%22%2C%22includePromotedContent%22%3Atrue%2C%22withCommunity%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withBirdwatchNotes%22%3Atrue%2C%22withVoice%22%3Atrue%7D
-#https://x.com/i/api/graphql/nBS-WpgA6ZG0CyNHD517JQ/TweetDetail?variables=%7B%22focalTweetId%22%3A%221850670820894421069%22%2C%22with_rux_injections%22%3Afalse%2C%22rankingMode%22%3A%22Relevance%22%2C%22includePromotedContent%22%3Atrue%2C%22withCommunity%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withBirdwatchNotes%22%3Atrue%2C%22withVoice%22%3Atrue%7D&features=%7B%22rweb_tipjar_consumption_enabled%22%3Atrue%2C%22responsive_web_graphql_exclude_directive_enabled%22%3Atrue%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22communities_web_enable_tweet_community_results_fetch%22%3Atrue%2C%22c9s_tweet_anatomy_moderator_badge_enabled%22%3Atrue%2C%22articles_preview_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22tweet_awards_web_tipping_enabled%22%3Afalse%2C%22creator_subscriptions_quote_tweet_preview_enabled%22%3Afalse%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22rweb_video_timestamps_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Atrue%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D&fieldToggles=%7B%22withArticleRichContentState%22%3Atrue%2C%22withArticlePlainText%22%3Afalse%2C%22withGrokAnalyze%22%3Afalse%2C%22withDisallowedReplyControls%22%3Afalse%7D
+#variables=%7B%22focalTweetId%22%3A%221850670820894421069%22%2C%22cursor%22%3A%22DwAAAPAAHCaEgLn98s7crjM1AgAA%22%2C%22referrer%22%3A%22tweet%22%2C%22with_rux_injections%22%3Afalse%2C%22rankingMode%22%3A%22Relevance%22%2C%22includePromotedContent%22%3Afalse%2C%22withCommunity%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withBirdwatchNotes%22%3Atrue%2C%22withVoice%22%3Atrue%7D
+#https://x.com/i/api/graphql/nBS-WpgA6ZG0CyNHD517JQ/TweetDetail?variables=%7B%22focalTweetId%22%3A%221850670820894421069%22%2C%22with_rux_injections%22%3Afalse%2C%22rankingMode%22%3A%22Relevance%22%2C%22includePromotedContent%22%3Afalse%2C%22withCommunity%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withBirdwatchNotes%22%3Atrue%2C%22withVoice%22%3Atrue%7D&features=%7B%22rweb_tipjar_consumption_enabled%22%3Atrue%2C%22responsive_web_graphql_exclude_directive_enabled%22%3Atrue%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22communities_web_enable_tweet_community_results_fetch%22%3Atrue%2C%22c9s_tweet_anatomy_moderator_badge_enabled%22%3Atrue%2C%22articles_preview_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22tweet_awards_web_tipping_enabled%22%3Afalse%2C%22creator_subscriptions_quote_tweet_preview_enabled%22%3Afalse%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22rweb_video_timestamps_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Atrue%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D&fieldToggles=%7B%22withArticleRichContentState%22%3Atrue%2C%22withArticlePlainText%22%3Afalse%2C%22withGrokAnalyze%22%3Afalse%2C%22withDisallowedReplyControls%22%3Afalse%7D
 
 
 def raw_tweet_to_parsed(tweet_result):
@@ -155,6 +155,7 @@ def parse_one_tweet(tweets, entry, is_module=False):
     itemContent = item['itemContent']
     new_cursors = {}
     new_tweets = []
+    adFound = False
 
     if itemContent['itemType'] == "TimelineTimelineCursor":
         new_cursors[itemContent['cursorType']] = itemContent['value']
@@ -162,6 +163,11 @@ def parse_one_tweet(tweets, entry, is_module=False):
     
     elif item.get('clientEventInfo', {}).get('component', '') == "related_tweet":
         # no! bad twitter! don't inject things not in the conversation into the conversation!!!!!
+        pass
+
+    elif 'promotedMetadata' in itemContent:
+        # skip injected ads
+        adFound = True
         pass
     
     # if someone deletes their account entirely, TweetDetail will return empty tweet_results for deleted tweets
@@ -182,7 +188,7 @@ def parse_one_tweet(tweets, entry, is_module=False):
             new_tweets.append(raw_tweet_to_parsed(itemContent['tweet_results']['result']))
             #print("TM" if is_module else "TI", itemContent['tweet_results']['result']['legacy']['full_text'] )
     
-    return new_cursors, new_tweets
+    return new_cursors, new_tweets, adFound
 
 def fetch_tweet_detail(focalTweetId, cursor=None):
     ratelimit_wait()
@@ -193,6 +199,7 @@ def fetch_tweet_detail(focalTweetId, cursor=None):
 
     tweets = [] # tuples of tweet, user data
     cursors = {} # tuples of cursor type, value
+    adCount = 0
 
     # handle missing top-level tweets, which when you look them up give you a big ole nope instead of a tombstone
     if any( ["No status found" in error.get('message', "") for error in result.get('errors', [])] ):
@@ -203,16 +210,31 @@ def fetch_tweet_detail(focalTweetId, cursor=None):
         if instr['type'] == "TimelineAddEntries":
             for idx, entry in enumerate(instr['entries']):
                 if entry['content']['entryType'] == "TimelineTimelineItem":
-                    new_cursors, new_tweets = parse_one_tweet(tweets, entry)
+                    new_cursors, new_tweets, adFound = parse_one_tweet(tweets, entry)
+                    adCount += 1 if adFound else 0
                     cursors.update(new_cursors)
                     tweets.extend(new_tweets)
                     
                 # timeline modules are boxes with more tweets in them, sometimes called "profile conversations"
                 elif entry['content']['entryType'] == "TimelineTimelineModule":
                     for item in entry['content']['items']:
-                        new_cursors, new_tweets = parse_one_tweet(tweets, item, is_module=True)
+                        new_cursors, new_tweets, adFound = parse_one_tweet(tweets, item, is_module=True)
+                        adCount += 1 if adFound else 0
                         cursors.update(new_cursors)
                         tweets.extend(new_tweets)
+
+    if adCount > 0:
+        print(" removed", adCount, "ads,", len(tweets), "real tweets remain")
+        if len(tweets) == 0:
+            print("...there was only ever a single ad?")
+            import pdb; pdb.set_trace()
+            pass
+
+
+    if cursor == None and not (focalTweetId in [t['status_id'] for t in tweets]):
+        print("could not find focal tweet in TweetDetail call (?!)", focalTweetId)
+        import pdb; pdb.set_trace()
+        pass
 
     return (tweets, cursors)
 
