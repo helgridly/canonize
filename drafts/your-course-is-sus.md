@@ -1,12 +1,17 @@
 ---
 layout: canon
 title: Your Course Is Sus
+hidetitle: true
 creation_date: 2025-01-04 23:19:47+00:00
 last_updated: 2025-01-04 23:19:47+00:00
 mentions: ['baoteching']
 tags: ['twitter', 'growth', 'healing', 'pontificating']
 sources: []
 ---
+
+_with thanks to [@baoteching](https://twitter.com/baoteching) for indulging my initial articulation of these thoughts via DM, and for proofreading this draft_ 
+
+# Your Course Is Sus
 
 I don't trust most courses in the tpot ecosystem. Put simply, I think the people running them are woefully underqualified.
 
