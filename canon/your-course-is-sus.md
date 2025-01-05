@@ -13,7 +13,7 @@ _with thanks to [@baoteching](https://twitter.com/baoteching) for indulging my i
 
 # Your Course Is Sus
 
-I don't trust most courses in the tpot ecosystem. Put simply, I think the people running them are woefully underqualified.
+I don't trust most courses in the tpot ecosystem. Put simply, I think the people running them are underqualified.
 
 The folks I am thinking of are in their 30s and 40s. This is _technically_ long enough to have developed deep expertise, but you'd need to have started quite young, or have discovered some prodigious natural talent later in life. Both cases require focused, extremely diligent practice, which takes time.
 
