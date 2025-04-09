@@ -10,7 +10,7 @@ sources: ['1908339397935653348', '1908734570737869299', '1908725809264673092']
 
 ## My experience at a local ecstatic dance
 
-I'll caveat this by saying that this was my first (and so far only) ecstatic dance experience. Any number of things could be happening here: I could be very guarded; this could have indeed been a weird day for the event; maybe my local scene has strange vibes; etc etc. I can't know with n=1, but I can share my experience and compare to my usual [5Rhythms practice](intro-to-5rhythms).
+I'll caveat this by saying that this was my first (and so far only) ecstatic dance experience. Any number of things could be happening here: I could be very guarded; this could have indeed been a weird day for the event; maybe my local scene has strange vibes; etc etc. I can't know with n=1, but I can share my experience and compare to my usual [5Rhythms practice](../intro-to-5rhythms).
 
 In short: the energy was extremely _off_.
 
