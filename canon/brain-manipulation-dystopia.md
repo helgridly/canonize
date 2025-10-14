@@ -12,7 +12,7 @@ A dystopian future where we know how the brain signals desire, and can manipulat
   
 Secured areas are blocked off by an "I don't feel like going here" field that makes you want to leave.
   
-Civilian regulators attempting to battle "yes" fields aimed at the sidewalk near stores.People adapt, overriding their instinct with rationality, with the unfortunate side effect of blunting their self awareness.
+Civilian regulators attempting to battle "yes" fields aimed at the sidewalk near stores. People adapt, overriding their instinct with rationality, with the unfortunate side effect of blunting their self awareness.
   
 Taking a child anywhere is even more of a nightmare.  
   
