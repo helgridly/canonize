@@ -140,3 +140,15 @@ A couple of people have asked if I'll do another one. I almost certainly will, t
 I'd like to get on the 5Rhythms teacher training for the 2027 cohort. If I keep up my current trajectory of classes I should _just_ about meet the prerequisite 300 hours of classes in time to apply; but I'll have to put significant effort (and time, and travel, and money) into attending the numerous workshops also required. I could also just take it easy and bump to the 2028 cohort, but I think my strategy is to get good enough and start running informal classes regularly enough that I can say to the 5Rhythms Teaching Association "look, I'm already doing this; wouldn't it be better for all of us if I was trained?" and get in earlier.
 
 Thanks for reading. Maybe I'll see you at hussein dance 2 😄
+
+## OK but can I listen to the sets please???
+
+Yes.
+
+First set:
+
+<iframe scrolling="no" style="border-radius: 10px;" id="hearthis_at_track_12770785" width="100%" height="150" src="https://app.hearthis.at/embed/12770785/transparent_black/?hcolor=&color=&style=2&block_size=2&block_space=1&background=1&waveform=0&cover=0&autoplay=0&css=" frameborder="0" allowtransparency allow="autoplay"><p>Listen to <a href="https://hearthis.at/husseinmixes/mix4/" target="_blank">hussein mix 4</a> <span>by</span><a href="https://hearthis.at/husseinmixes/" target="_blank" >husseinmixes</a> <span>on</span> <a href="https://hearthis.at/" target="_blank">hearthis.at</a></p></iframe>
+
+Second set:
+
+<iframe scrolling="no" style="border-radius: 10px;" id="hearthis_at_track_12800601" width="100%" height="150" src="https://app.hearthis.at/embed/12800601/transparent_black/?hcolor=&color=&style=2&block_size=2&block_space=1&background=1&waveform=0&cover=0&autoplay=0&css=" frameborder="0" allowtransparency allow="autoplay"><p>Listen to <a href="https://hearthis.at/husseinmixes/2025birthday/" target="_blank">2025 birthday mix</a> <span>by</span><a href="https://hearthis.at/husseinmixes/" target="_blank" >husseinmixes</a> <span>on</span> <a href="https://hearthis.at/" target="_blank">hearthis.at</a></p></iframe>
