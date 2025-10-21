@@ -17,7 +17,7 @@ _Disclaimer: I am not (yet 😉) a certified 5Rhythms™ teacher. I do not repre
 
 <img src="../../images/husseindance.jpg" width="600"/>
 
-For my 39th birthday I hosted the very first ever "hussein dance" for a few friends I've made through 5Rhythms. I played two sets: one performed live, one pre-recorded so I could dance too. This was my first time performing, and the two sets were my 4th and 5th sets I've ever made. One guidepost I've had through my learning-to-DJ journey has been to say "that's _good enough_" and publish, ship it, keep going, keep learning - rather than obsessing and gold plating. SO even though I haven't been doing it for very long, I wanted to get the experience of being live in front of a group of dancers, and feel what that's like. Hosting a free event for my birthday was a good excuse to ask my friends to take a risk with a precious New York Saturday night!
+For my 39th birthday I hosted the very first ever "hussein dance" for a few friends I've made through 5Rhythms. I played two sets: one performed live, one pre-recorded so I could dance too. This was my first time performing, and the two sets were my 4th and 5th sets I've ever made. One guidepost I've had through my learning-to-DJ journey has been to say "that's _good enough_" and publish, ship it, keep going, keep learning - rather than obsessing and gold plating. So even though I haven't been doing it for very long, I wanted to get the experience of being live in front of a group of dancers, and feel what that's like. Hosting a free event for my birthday was a good excuse to ask my friends to take a risk with a precious New York Saturday night!
 
 I will skip a long description of the setup and logistics, except to say: I could not have done this without the help of many people. I borrowed some beefy speakers from Nico, a professional microphone & some lights from Justin, and David was the hero with the car who got everything to & from the venue, and also did a lot of listening to my neurotic fretting in the days prior. There were also a swarm of people who helped set up: Anna, Ashley, Margaux, and probably others I'm missing.
 
@@ -31,7 +31,7 @@ Unsurprisingly the lesson here is the harder I grip, the more it slips out of my
 
 ## The event itself
 
-I invited about 30 people for a space that had a capacity of 20 and was a pain in the ass about asking for RSVPs. The final count was 14, including 3 teachers(!). I brought my baby album and a few trinkets including my Zen rakusu to build an art installation / altar, as is traditional at 5R dances.
+I invited about 30 people for a space that had a capacity of 20; then I was a pain in the ass about asking for RSVPs. The final count was 14, including 3 teachers(!). I brought my baby album and a few trinkets including my Zen rakusu to build an art installation / altar, as is traditional at 5R dances.
 
 Despite having something like 35sqft per dancer, the room felt small and crowded, in part because of its slightly awkward T shape. This also made it difficult for people to move and flow around each other - crossing the space took a lot of weaving and negotiation. As a result people generally stayed in their spots and their movements didn't get too big.
 
