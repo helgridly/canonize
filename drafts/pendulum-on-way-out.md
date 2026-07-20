@@ -42,6 +42,7 @@ efficacy and the teacher training
     - i would want to learn those skills myself before teaching (especially at the kind of depth i feel drawn to), and if the 5R teacher training doesn't teach it then i'd have to seek out my own curriculum
     - this is not to say that _no_ 5R teacher does a good job here; i know of a few, who i highly respect. but they've done the work to get there themselves
     - in which case, what's the point of the 5R teacher training? permission to use the brand, engagement with the community, in exchange for teaching to their standards and, i am told, restrictions on what you can teach in terms of movement practice _in perpetuity_
+        - apparently amber and kate had to hire lawyers in order to extract themselves from the contract when they broke off to form Open Floor
 
 ### what _do_ i believe?
 
