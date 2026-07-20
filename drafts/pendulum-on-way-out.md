@@ -18,7 +18,7 @@ the leadership
 
 - put simply: both johnny and the org appear to be unredeemably toxic
     - specific stories of johnny showing up to workshops late, drunk, being abusive in hallways
-- maybe even the practice itself has toxicity baked in. stories of gabrielle putting people on the spot, in front of everyone, and shooting at them with a squirt gun if     
+- maybe even the practice itself has toxicity baked in. stories of gabrielle putting people on the spot, in front of everyone, and shooting at them with a squirt gun if she thought they were being inauthentic
 - perhaps gabrielle really _was_ a generational genius, extraordinarily skilled at being able to open people up. i could believe it
     - but it appears that much of the community reveres the stories and approach she was using then, and has ossified them into an orthodoxy
     - in the 90s, _any_ amount of opening people up was good; now we have much higher standards of care in trauma healing circles, as we should
