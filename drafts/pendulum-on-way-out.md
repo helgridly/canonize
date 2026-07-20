@@ -44,6 +44,8 @@ efficacy and the teacher training
     - in which case, what's the point of the 5R teacher training? permission to use the brand, engagement with the community, in exchange for teaching to their standards and, i am told, restrictions on what you can teach in terms of movement practice _in perpetuity_
         - apparently amber and kate had to hire lawyers in order to extract themselves from the contract when they broke off to form Open Floor
 
+it's a shame, because i really love 5R practitioners as people. they're embodied people (obviously!) who are very willing and capable of meeting themselves. there's real depth to them. but membership in the organization seems like a poisoned chalice
+
 ### what _do_ i believe?
 
 - music is a hotwire to emotional state
