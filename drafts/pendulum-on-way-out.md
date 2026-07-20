@@ -18,6 +18,7 @@ the leadership
 
 - put simply: both johnny and the org appear to be unredeemably toxic
     - specific stories of johnny showing up to workshops late, drunk, being abusive in hallways
+    - the organization appears to be extremely controlling (more on this in discussion of the teacher training). i get the impression from both practitioners and even some teachers that there is hope that things will improve once he dies. but if he has a succession plan i imagine that control will continue, and if he doesn't, the organization appears to variously be enabling or working around him and i am unsure whether whoever inherits it will be able to transform it into something healthy
 - maybe even the practice itself has toxicity baked in. stories of gabrielle putting people on the spot, in front of everyone, and shooting at them with a squirt gun if she thought they were being inauthentic
 - perhaps gabrielle really _was_ a generational genius, extraordinarily skilled at being able to open people up. i could believe it
     - but it appears that much of the community reveres the stories and approach she was using then, and has ossified them into an orthodoxy
